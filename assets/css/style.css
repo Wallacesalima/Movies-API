@@ -1,0 +1,151 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #431313;
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+  background: #fff;
+  color: #111;
+  padding: 10px;
+  border-bottom: solid 2px #e50914;
+}
+
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+
+.busca-botao {
+  padding: 0.5rem 1rem;
+  text-align: center;
+}
+
+.buscar {
+  margin: 2rem;
+}
+
+.container {
+  display: grid;
+  padding: 20px;
+}
+
+.card-filmes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 2fr));
+  align-items: start;
+}
+
+.card {
+  background: #222222;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 20px;
+  min-height: 800px;
+}
+
+.card:hover {
+  background: #000000bc;
+}
+
+.card img {
+  width: 100%;
+  max-height: 370px;
+  border-radius: 4px 4px 0 0;
+  margin-bottom: 0;
+}
+
+.card h3 {
+  background: #790707;
+  border-radius: 0 0 4px 4px;
+  text-align: center;
+  font-size: 16px;
+  margin: -5px 0 15px;
+  padding: 10px;
+}
+
+.card span {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  color: #aaa;
+  margin: 5px;
+}
+
+.card p {
+  margin-top: 15px;
+  border-top: solid 2px #790707;
+  background: #79070723;
+  padding: 10px;
+  font-size: 16px;
+  text-align: center;
+  min-height: 13rem;
+  max-height: 13rem;
+  overflow-y: auto;
+}
+
+a {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 6px 12px;
+  background-color: #000000;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  border:  solid 2px #fff;
+}
+
+.botao-trailer {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 6px 12px;
+  background-color: #e50914;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  border:  solid 2px #fff;
+}
+
+.botao-trailer:hover {
+  background-color: #b20710;
+  cursor: pointer;
+}
+
+
+@media (max-width: 700px) {
+  .card {
+    margin: 1rem;
+    padding: 8px;
+  }
+
+  .card img {
+    max-height: 250px;
+  }
+
+  .card p {
+    font-size: 14px;
+    min-height: 10rem;
+    max-height: 10rem;
+  }
+
+  .card h3 {
+    font-size: 14px;
+  }
+
+  .card span {
+    font-size: 12px;
+  }
+
+  .card-filmes {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+}
