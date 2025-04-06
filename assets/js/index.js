@@ -32,7 +32,7 @@ function buscarFilme() {
 
                 const imagem = filme.poster_path
                     ? `https://image.tmdb.org/t/p/w500${filme.poster_path}`
-                    : "https://via.placeholder.com/300x450?text=Sem+Imagem";
+                    : "/assets/img/sem imagem - icon.png";
 
                 const resumo = filme.overview || "Sem resumo disponível";
                 const dataFormatada = filme.release_date ? formatarData(filme.release_date) : "Data não disponível";
@@ -43,8 +43,30 @@ function buscarFilme() {
                     <span>Nota: ${filme.vote_average?.toFixed(2) || "N/A"}</span>
                     <span>Data de lançamento: ${dataFormatada}</span>
                     <p>${resumo}</p>
+                    <div class="trailer-container">Carregando trailer...</div>
                 `;
+                const urlTrailer = `https://api.themoviedb.org/3/movie/${filme.id}/videos?api_key=${apiKey}&language=pt-BR`;
 
+                fetch(urlTrailer)
+                    .then(res => res.json())
+                    .then(videoData => {
+                        const trailer = videoData.results.find(video =>
+                            video.type === "Trailer" && video.site === "YouTube"
+                        );
+
+                        const trailerContainer = card.querySelector(".trailer-container");
+
+                        if (trailer) {
+                            trailerContainer.innerHTML = `
+        <a href="https://www.youtube.com/watch?v=${trailer.key}" 
+           target="_blank" 
+           class="botao-trailer">🎬 Ver Trailer</a>
+      `;
+                        } else {
+                            trailerContainer.innerHTML = `<a>Trailer não disponível.</a>`;
+                        }
+                    });
+                if (filme.vote_average === 0.00) return;
                 container.appendChild(card);
             });
         })
@@ -102,6 +124,7 @@ for (let i = 1; i <= 10; i++) {
                 if (filme.popularity > 200.000) {
                     cards.appendChild(card);
                 }
+
             });
         })
         .catch(erro => console.error("Erro ao buscar filmes:", erro));
