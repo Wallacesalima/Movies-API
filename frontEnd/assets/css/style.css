@@ -57,18 +57,23 @@ input {
 
 .card img {
   width: 100%;
-  max-height: 370px;
+  min-height: 380px;
+  max-height: 380px;
   border-radius: 4px 4px 0 0;
   margin-bottom: 0;
 }
 
 .card h3 {
+  display: grid;
+  justify-content: center;
+  align-content: center;
   background: #790707;
   border-radius: 0 0 4px 4px;
   text-align: center;
   font-size: 16px;
   margin: -5px 0 15px;
   padding: 10px;
+  min-height: 60px;
 }
 
 .card span {

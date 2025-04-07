@@ -11,7 +11,8 @@ function buscarFilme() {
         return;
     }
 
-    const urlBusca = `http://localhost:3000/filmes/busca?query=${encodeURIComponent(query)}`;
+    const urlBusca = `http://localhost:3000/api/buscar?query=${encodeURIComponent(query)}`;
+
 
 
     fetch(urlBusca)
@@ -44,7 +45,8 @@ function buscarFilme() {
                     <p>${resumo}</p>
                     <div class="trailer-container">Carregando trailer...</div>
                 `;
-                const urlTrailer = `https://api.themoviedb.org/3/movie/${filme.id}/videos?api_key=${apiKey}&language=pt-BR`;
+                const urlTrailer = `http://localhost:3000/api/trailer/${filme.id}`;
+
 
                 fetch(urlTrailer)
                     .then(res => res.json())
@@ -74,7 +76,8 @@ function buscarFilme() {
 
 // Carregar filmes populares
 for (let i = 1; i <= 10; i++) {
-    const url = `http://localhost:3000/filmes/populares?page=${i}`;
+    const url = `http://localhost:3000/api/populares?page=${i}`;
+
 
 
     fetch(url)
@@ -99,7 +102,8 @@ for (let i = 1; i <= 10; i++) {
                     <div class="trailer-container">Carregando trailer...</div>
                 `;
 
-                const urlTrailer = `https://api.themoviedb.org/3/movie/${filme.id}/videos?api_key=${apiKey}&language=pt-BR`;
+                const urlTrailer = `http://localhost:3000/api/trailer/${filme.id}`;
+
 
                 fetch(urlTrailer)
                     .then(res => res.json())
@@ -121,7 +125,7 @@ for (let i = 1; i <= 10; i++) {
                         }
                     });
 
-                if (filme.popularity > 200.000) {
+                if (filme.popularity > 200.0) {
                     cards.appendChild(card);
                 }
 
