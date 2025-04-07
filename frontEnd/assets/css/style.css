@@ -100,7 +100,7 @@ input {
   overflow-y: auto;
 }
 
-a {
+.sem_trailer {
   display: inline-block;
   margin-top: 20px;
   padding: 6px 12px;
