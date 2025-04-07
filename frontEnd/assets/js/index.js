@@ -78,8 +78,6 @@ function buscarFilme() {
 for (let i = 1; i <= 10; i++) {
     const url = `https://movies-api-dlx6.onrender.com/api/populares?page=${i}`;
 
-
-
     fetch(url)
         .then(resposta => resposta.json())
         .then(dados => {
