@@ -38,10 +38,12 @@ input {
 }
 
 .card-filmes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 2fr));
-  align-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-items: start;
 }
+
 
 .card {
   background: #222222;
@@ -49,6 +51,7 @@ input {
   padding: 10px;
   margin: 20px;
   min-height: 800px;
+  max-width: 300px;
 }
 
 .card:hover {
