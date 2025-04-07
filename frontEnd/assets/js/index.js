@@ -92,6 +92,8 @@ for (let i = 1; i <= 10; i++) {
                 const resumo = filme.overview || 'não existe resumo';
                 const dataFormatada = filme.release_date ? formatarData(filme.release_date) : "Data não disponível";
 
+                console.log(imagem === null )
+
                 card.innerHTML = `
                     <img src="${imagem}" alt="${filme.title}">
                     <h3>${filme.title}</h3>

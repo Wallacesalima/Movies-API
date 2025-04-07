@@ -41,7 +41,7 @@ input {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  justify-items: start;
+  justify-content: center;
 }
 
 
