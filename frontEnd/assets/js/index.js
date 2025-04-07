@@ -11,7 +11,7 @@ function buscarFilme() {
         return;
     }
 
-    const urlBusca = `http://localhost:3000/api/buscar?query=${encodeURIComponent(query)}`;
+    const urlBusca = `https://movies-api-dlx6.onrender.com/api/buscar?query=${encodeURIComponent(query)}`;
 
 
 
@@ -45,7 +45,7 @@ function buscarFilme() {
                     <p>${resumo}</p>
                     <div class="trailer-container">Carregando trailer...</div>
                 `;
-                const urlTrailer = `http://localhost:3000/api/trailer/${filme.id}`;
+                const urlTrailer = `https://movies-api-dlx6.onrender.com/api/trailer/${filme.id}`;
 
 
                 fetch(urlTrailer)
@@ -76,7 +76,7 @@ function buscarFilme() {
 
 // Carregar filmes populares
 for (let i = 1; i <= 10; i++) {
-    const url = `http://localhost:3000/api/populares?page=${i}`;
+    const url = `https://movies-api-dlx6.onrender.com/api/populares?page=${i}`;
 
 
 
@@ -102,7 +102,7 @@ for (let i = 1; i <= 10; i++) {
                     <div class="trailer-container">Carregando trailer...</div>
                 `;
 
-                const urlTrailer = `http://localhost:3000/api/trailer/${filme.id}`;
+                const urlTrailer = `https://movies-api-dlx6.onrender.com/api/trailer/${filme.id}`;
 
 
                 fetch(urlTrailer)
