@@ -57,7 +57,7 @@ function formatarData(dataISO) {
                class="botao-trailer">🎬 Ver Trailer</a>`;
         } else {
           // Se não tiver trailer
-          trailerContainer.innerHTML = `<span>Trailer não disponível.</span>`;
+          trailerContainer.innerHTML = `<a>Trailer não disponível.</a>`;
         }
       });
   }
