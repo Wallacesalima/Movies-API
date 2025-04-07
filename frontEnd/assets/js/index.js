@@ -32,7 +32,9 @@ function buscarFilme() {
 
                 const imagem = filme.poster_path
                     ? `https://image.tmdb.org/t/p/w500${filme.poster_path}`
-                    : "/assets/img/sem imagem - icon.png";
+                    : "/frontEnd/assets/img/sem-foto.gif";
+
+                    console.log(imagem)
 
                 const resumo = filme.overview || "Sem resumo disponível";
                 const dataFormatada = filme.release_date ? formatarData(filme.release_date) : "Data não disponível";
@@ -90,7 +92,6 @@ for (let i = 1; i <= 10; i++) {
                 const resumo = filme.overview || 'não existe resumo';
                 const dataFormatada = filme.release_date ? formatarData(filme.release_date) : "Data não disponível";
 
-                console.log(imagem === null )
 
                 card.innerHTML = `
                     <img src="${imagem}" alt="${filme.title}">
