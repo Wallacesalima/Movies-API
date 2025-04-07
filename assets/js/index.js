@@ -1,4 +1,3 @@
-const apiKey = "d3992dba3acff8bf7cb70395e142af81";
 
 function formatarData(dataISO) {
     const [ano, mes, dia] = dataISO.split("-");
