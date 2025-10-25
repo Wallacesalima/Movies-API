@@ -18,31 +18,34 @@ h1 {
 }
 
 input {
-  padding: 0.5rem 5rem;
-  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
   border: none;
-  font-size: 16px;
   outline: none;
+  color: #000000;
+  width: 25%;
+  text-align: center;
 }
 
 
 .busca-botao {
-  padding: 0.5rem 1.5rem;
   text-align: center;
-  background: linear-gradient(135deg, #010101, #cb1111);
+  background: rgb(57, 55, 55);
   color: white;
   cursor: pointer;
   border: none;
-  font-size: large;
+  font-size: 1.7rem;
+  width: 4rem;
+  height: 3.5rem;
 }
 
 .busca-botao:hover {
   background: linear-gradient(135deg, #6a11cb, #2575fc);
 }
 
-
-.buscar {
-  margin: 2rem;
+.centralizar {
+  display: flex;
+  justify-content: center;
 }
 
 .container {
