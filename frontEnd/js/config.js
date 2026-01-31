@@ -1,0 +1,1 @@
+const API_BASE_URL = 'https://movies-api-dlx6.onrender.com/api'

@@ -10,16 +10,19 @@
 <body>
   <h1>FILMES POPULARES</h1>
   <div class="container">
-    <section>
+    <section class="section-filmes">
       <div class="busca centralizar">
         <input type="text" id="inputBusca" placeholder="Digite o nome do filme" >
         <button id="botaoBusca" class="busca-botao">🔎</button>
       </div>
+      <p id="feedback" class="feedback hidden"></p>
       <div class="card-filmes"></div>
     </section>
   </div>
 
+  <script src="frontEnd/js/api.js"></script>
   <script src="/frontEnd/js/index.js"></script>
-  <!-- <script src="/assets/js/apiKey.js"></script> -->
+  <script src="/frontEnd/js/trailer.js"></script>
+  <script src="/frontEnd/js/config.js"></script>
 </body>
 </html>

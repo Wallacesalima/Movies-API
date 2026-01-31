@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
-app.use(express.static(path.join(__dirname, '../frontEnd'))); 
+app.use(express.static(path.join(__dirname, '../frontEnd')));
 
 const app = express();
 const PORT = 3000;
