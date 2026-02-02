@@ -65,6 +65,7 @@ function mostrarLoading() {
 function esconderFeedback() {
     feedback.classList.add('hidden');
     feedback.classList.remove('feedback_error', 'feedback_info');
+    feedback.textContent = ''
 }
 
 
