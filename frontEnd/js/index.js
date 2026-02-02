@@ -44,27 +44,53 @@ function criarCardFilme(filme) {
     return card;
 }
 
+const feedback = document.getElementById('feedback');
+
+
+function mostrarFeedback(mensagem) {
+    feedback.classList.remove('feedback_error', 'feedback_info'); 
+    feedback.textContent = mensagem;
+    feedback.classList.remove('hidden');
+}
+function mostrarLoading() {
+    feedback.classList.remove('hidden');
+    feedback.innerHTML = `
+      <div class="container_gif">
+        <img class="gif_carregando" src="frontEnd/assets/gifs/loader-9342.gif" alt="Carregando">
+        <p>Buscando filme...</p>
+      </div>
+    `;
+}
+
+function esconderFeedback() {
+    feedback.classList.add('hidden');
+    feedback.classList.remove('feedback_error', 'feedback_info');
+}
+
 
 // Função que busca filmes com base na pesquisa do usuário
 function buscarFilme() {
     const query = document.getElementById("inputBusca").value.trim();
-    const feedback = document.getElementById('feedback')
-    feedback.classList.add('hidden')
 
     if (!query) {
-        feedback.classList.remove('hidden')
-        feedback.textContent = "🔍 Digite o nome de um filme para ver detalhes e trailers"
+        esconderFeedback()
+        mostrarFeedback("🔍 Digite o nome de um filme para ver detalhes e trailers");
         return;
     }
 
+    esconderFeedback()
+
     const container = document.querySelector(".card-filmes");
-    container.innerHTML = '<div class="container_gif"> <img class="gif_carregando" src="frontEnd/assets/gifs/loader-9342.gif" alt="gif de carregamento"> </div>'
+
+    container.innerHTML = ""; // Limpa os resultados anteriores
+    mostrarLoading()
 
     buscarFilmeApi(query).then(dados => {
-        container.innerHTML = ""; // Limpa os resultados anteriores
+        esconderFeedback()
 
         if (!dados.results.length) {
-            container.innerHTML = "<p>Nenhum filme encontrado.</p>";
+            mostrarFeedback('Nenhum filme encontrado, digite um nome de filme valido.')
+            feedback.classList.add('feedback_error')
             return;
         }
 
@@ -77,29 +103,29 @@ function buscarFilme() {
     })
         .catch(erro => {
             console.error("Erro ao buscar filme:", erro);
-            container.innerHTML = "<p>Erro ao buscar filme.</p>";
         });
 }
 
 // Função que carrega os filmes populares automaticamente
 function carregarFilmesPopulares() {
     const container = document.querySelector(".card-filmes");
-    
-    // Vai buscar em 30 páginas de resultados
-    for (let i = 1; i <= 30; i++) {
+
+    // Vai buscar em 5 páginas de resultados
+    for (let i = 1; i <= 5; i++) {
         const url = `https://movies-api-dlx6.onrender.com/api/populares?page=${i}`;
-        
+
         carregarFilmesPopularesApi(url).then(dados => {
-            
+
             dados.results.forEach(filme => {
                 // Só mostra se for popular o suficiente
                 if (filme.popularity > 100.0 && filme.vote_average > 6) {
+
                     const card = criarCardFilme(filme);
                     container.appendChild(card);
                 }
             });
         })
-        .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
+            .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
     }
 }
 
@@ -107,13 +133,19 @@ function carregarFilmesPopulares() {
 // Quando o site carregar, adiciona o evento de clique no botão de busca
 document.addEventListener("DOMContentLoaded", () => {
 
+    mostrarFeedback('Digite um filme no campo acima e clique na "🔍" para busca-lo.')
+    feedback.classList.add('feedback_info')
+
     document.getElementById("botaoBusca").addEventListener("click", buscarFilme);
     carregarFilmesPopulares(); // Carrega os populares automaticamente
+
+    document.getElementById("inputBusca")
+        .addEventListener("keydown", (event) => {
+            if (event.key === "Enter") buscarFilme();
+        });
+
+    esconderFeedback()
 });
 
 
 
-document.addEventListener('keydown', (event) => {
-    container.innerHTML = ''
-    if (event.key === "Enter") buscarFilme()
-});
