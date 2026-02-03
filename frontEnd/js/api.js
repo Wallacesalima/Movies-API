@@ -14,5 +14,20 @@ function buscarFilmeApi(query) {
 
 function carregarFilmesPopularesApi(url) {
     return fetch(url)
-            .then(res => res.json())
+        .then(res => res.json())
 }
+
+function carregarMelhoresNotasApi(url) {
+    return fetch(url)
+        .then(res => res.json())
+}
+
+
+function carregarLancamentosApi() {
+    const hoje = new Date().toISOString().split('T')[0];
+    return fetch().then(res => res.json());
+}
+
+
+
+

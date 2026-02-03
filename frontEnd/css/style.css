@@ -3,18 +3,51 @@
   margin: 0;
 }
 
+nav {
+  background: #311919;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  border-bottom: solid 2px #fff;
+}
+
 body {
   font-family: Arial, sans-serif;
   background: #431313;
   color: #fff;
 }
 
-h1 {
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
   text-align: center;
-  background: #311919;
+  border-top: 2px solid #ffffff;
+  padding: 2rem;
+  background-color: #311919;
+
+}
+
+.container_footer {
+  margin: 1rem;
+}
+
+.github_icon img, .linkedin_icon img {
+ height: 2.5rem;
+
+}
+
+.github_icon , .linkedin_icon  {
+  height: 5rem;
+  padding: 0.5rem;
+}
+
+h1 {
   color: #ffffff;
-  padding: 10px;
-  border-bottom: solid 2px #e60a15;
+  padding: 1rem;
+  margin: 0.5rem;
 }
 
 input {
@@ -22,15 +55,25 @@ input {
   font-size: 1.2rem;
   border: none;
   outline: none;
-  color: #000000;
-  width: 25%;
+  color: #ffffff;
+  width: 50%;
   text-align: center;
 }
 
-.busca {
-  margin-bottom: 2.5rem;
+input:focus {
+  transition: all 0.5s ease-in-out;
+  background: #431313;
+  border:solid 2px #fff;
+  outline: #fff;
 }
 
+input::placeholder {
+  color: #431313;
+}
+
+.busca {
+  margin-bottom: 1rem;
+}
 
 .busca-botao {
   text-align: center;
@@ -44,10 +87,11 @@ input {
 }
 
 .busca-botao:hover {
- background-color: #790707;
+  background-color: #790707;
 }
+
 .busca-botao:active {
-  background:#79070791;
+  background: #79070791;
 }
 
 .centralizar {
@@ -58,6 +102,7 @@ input {
 .container {
   display: grid;
   padding: 2rem;
+  min-height: 70vh;
 }
 
 .container_gif {
@@ -66,6 +111,37 @@ input {
   align-items: center;
   font-size: 2rem;
 }
+
+.btns_nav {
+  display: flex;
+  gap: 3rem;
+  margin: 0 2rem;
+}
+
+.btns_nav_style {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  background-color: #311919;
+  color: #fff;
+  border-radius: 1rem;
+  min-width: 12rem;
+  border: solid 2px #fff;
+}
+
+.btns_nav_style:hover {
+  color: #311919;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.5s linear;
+}
+
+.btns_nav_style:active {
+  background-color: #222222;
+  color: #fff;
+  transition: none;
+}
+
 
 .gif_carregando {
   padding: 2.5rem;
@@ -81,19 +157,19 @@ input {
 }
 
 .card {
-  background: #222222;
+  background: #311919;
   border-radius: 8px;
   padding: 10px;
   margin: 20px;
   min-height: 800px;
   min-width: 300px;
   max-width: 300px;
-  border: solid 3px #790707;
+  border: solid 2px #ffffff;
 }
 
 .card:hover {
   background: #000000bc;
-  box-shadow: 0 12px 20px rgba(230, 10, 21, 0.2);
+  box-shadow: 0 12px 20px rgba(255, 255, 255, 0.1);
   /* sombra mais destacada */
   transform: translateY(-5px);
   /* leve elevação */
@@ -105,15 +181,16 @@ input {
   max-height: 380px;
   border-radius: 4px 4px 0 0;
   margin-bottom: 0;
-  border: solid 3px #790707;
+  border: solid 3px #ffffff;
 }
 
 
 .card h3 {
   display: grid;
+  color: #311919;
   justify-content: center;
   align-content: center;
-  background: #790707;
+  background: #ffffff;
   border-radius: 0 0 4px 4px;
   text-align: center;
   font-size: 16px;
@@ -132,10 +209,11 @@ input {
 
 .card p {
   margin-top: 15px;
-  border-top: solid 2px #790707;
-  background: #79070723;
-  padding: 10px;
-  font-size: 16px;
+  border-top: solid 2px #fff;
+  background: #431313;
+  border-radius: 0 0 0.5rem 0.5rem ;
+  padding: 0.8rem;
+  font-size: 1rem;
   text-align: center;
   min-height: 13rem;
   max-height: 13rem;
@@ -144,7 +222,7 @@ input {
 
 .sem_trailer {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 1rem;
   padding: 6px 12px;
   background-color: #000000;
   color: white;
@@ -156,7 +234,7 @@ input {
 
 .botao-trailer {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 1rem;
   padding: 6px 12px;
   background-color: #e50914;
   color: white;
@@ -181,7 +259,7 @@ input {
   align-self: center;
   color: #ccc;
   font-size: 1rem;
-  margin: 2.5rem 0;
+  margin: 1rem 0;
   opacity: 0;
   animation: fadeUp 0.6s ease-out forwards;
 }
@@ -200,7 +278,7 @@ input {
   justify-content: center;
   padding: 1rem;
   font-size: 1.2rem;
-  width: 40%;
+  width: 50%;
   background-color: #393031cd;
   animation: fadeUp 0.7s ease-out forwards;
 }
@@ -210,6 +288,7 @@ input {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 0.8;
     transform: translateY(0);

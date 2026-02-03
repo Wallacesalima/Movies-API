@@ -48,11 +48,11 @@ const feedback = document.getElementById('feedback');
 
 
 function mostrarFeedback(mensagem) {
-    feedback.classList.remove('feedback_error', 'feedback_info'); 
     feedback.textContent = mensagem;
     feedback.classList.remove('hidden');
 }
 function mostrarLoading() {
+    feedback.classList.remove('feedback_error', 'feedback_info');
     feedback.classList.remove('hidden');
     feedback.innerHTML = `
       <div class="container_gif">
@@ -67,6 +67,7 @@ function esconderFeedback() {
     feedback.classList.remove('feedback_error', 'feedback_info');
     feedback.textContent = ''
 }
+
 
 
 // Função que busca filmes com base na pesquisa do usuário
@@ -110,6 +111,9 @@ function buscarFilme() {
 // Função que carrega os filmes populares automaticamente
 function carregarFilmesPopulares() {
     const container = document.querySelector(".card-filmes");
+    mostrarLoading()
+    container.textContent = ''
+
 
     // Vai buscar em 5 páginas de resultados
     for (let i = 1; i <= 5; i++) {
@@ -119,8 +123,8 @@ function carregarFilmesPopulares() {
 
             dados.results.forEach(filme => {
                 // Só mostra se for popular o suficiente
-                if (filme.popularity > 100.0 && filme.vote_average > 6) {
-
+                if (filme.popularity > 100.0) {
+                    esconderFeedback()
                     const card = criarCardFilme(filme);
                     container.appendChild(card);
                 }
@@ -130,22 +134,66 @@ function carregarFilmesPopulares() {
     }
 }
 
+function carregarFilmesMelhoresNotas() {
+    const container = document.querySelector(".card-filmes");
+    mostrarLoading()
+    container.textContent = ''
+
+    // Vai buscar em 5 páginas de resultados
+    for (let i = 1; i <= 5; i++) {
+        const url = `https://movies-api-dlx6.onrender.com/api/melhores-notas?page=${i}`;
+
+        carregarMelhoresNotasApi(url).then(dados => {
+            
+            dados.results.forEach(filme => {
+                // Só mostra se for popular o suficiente
+                if (filme.vote_average > 7) {
+                    const card = criarCardFilme(filme);
+                    container.appendChild(card);
+                }
+                esconderFeedback()
+            });
+        })
+            .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
+    }
+}
+
+function carregarLancamentos() {
+    const container = document.querySelector(".card-filmes");
+    container.textContent = ''
+
+    carregarLancamentosApi().then(dados => {
+        dados.results.forEach(filme => {
+            const card = criarCardFilme(filme);
+            container.appendChild(card);
+        });
+    })
+        .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
+}
+
+
 
 // Quando o site carregar, adiciona o evento de clique no botão de busca
 document.addEventListener("DOMContentLoaded", () => {
 
-    mostrarFeedback('Digite um filme no campo acima e clique na "🔍" para busca-lo.')
     feedback.classList.add('feedback_info')
+    mostrarFeedback('Digite um filme no campo acima e clique na "🔍" para busca-lo.')
 
     document.getElementById("botaoBusca").addEventListener("click", buscarFilme);
-    carregarFilmesPopulares(); // Carrega os populares automaticamente
 
     document.getElementById("inputBusca")
         .addEventListener("keydown", (event) => {
             if (event.key === "Enter") buscarFilme();
         });
 
-    esconderFeedback()
+    document.getElementById("populares").addEventListener('click', () => {
+        carregarFilmesPopulares()
+    })
+
+    document.getElementById("melhores_notas").addEventListener('click', carregarFilmesMelhoresNotas)
+
+    document.getElementById("lancamento").addEventListener('click', carregarLancamentos)
+
 });
 
 
