@@ -114,7 +114,6 @@ function carregarFilmesPopulares() {
     mostrarLoading()
     container.textContent = ''
 
-
     // Vai buscar em 5 páginas de resultados
     for (let i = 1; i <= 5; i++) {
         const url = `https://movies-api-dlx6.onrender.com/api/populares?page=${i}`;
@@ -139,19 +138,22 @@ function carregarFilmesMelhoresNotas() {
     mostrarLoading()
     container.textContent = ''
 
-    // Vai buscar em 5 páginas de resultados
-    for (let i = 1; i <= 5; i++) {
-        const url = `https://movies-api-dlx6.onrender.com/api/melhores-notas?page=${i}`;
 
-        carregarMelhoresNotasApi(url).then(dados => {
-            
+    // Vai buscar em 5 páginas de resultados
+    for (let i = 1; i <= 10; i++) {
+        const url = `http://localhost:3001/api/melhoresNotas?page=${i}`;
+
+
+         carregarMelhoresNotasApi(url).then(dados => {
+
+             console.log(dados)
             dados.results.forEach(filme => {
-                // Só mostra se for popular o suficiente
-                if (filme.vote_average > 7) {
+                // Só mostra filmes com nota maior ou igual 8
+                if (filme.vote_average >= 8) {
+                    esconderFeedback()
                     const card = criarCardFilme(filme);
                     container.appendChild(card);
                 }
-                esconderFeedback()
             });
         })
             .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
@@ -160,18 +162,23 @@ function carregarFilmesMelhoresNotas() {
 
 function carregarLancamentos() {
     const container = document.querySelector(".card-filmes");
-    container.textContent = ''
+    container.textContent = '';
 
-    carregarLancamentosApi().then(dados => {
-        dados.results.forEach(filme => {
-            const card = criarCardFilme(filme);
-            container.appendChild(card);
+    mostrarLoading();
+
+    carregarLancamentosApi()
+        .then(dados => {
+            esconderFeedback();
+
+            dados.results.forEach(filme => {
+                container.appendChild(criarCardFilme(filme));
+            });
+        })
+        .catch(() => {
+            mostrarFeedback("Erro ao carregar lançamentos");
+            feedback.classList.add("feedback_error");
         });
-    })
-        .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
 }
-
-
 
 // Quando o site carregar, adiciona o evento de clique no botão de busca
 document.addEventListener("DOMContentLoaded", () => {
@@ -184,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("inputBusca")
         .addEventListener("keydown", (event) => {
             if (event.key === "Enter") buscarFilme();
+
         });
 
     document.getElementById("populares").addEventListener('click', () => {

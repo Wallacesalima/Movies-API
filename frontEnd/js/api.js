@@ -1,3 +1,4 @@
+
 function carregarTrailerApi(idFilme) {
     const urlTrailer = `${API_BASE_URL}/trailer/${idFilme}`;
 
@@ -22,10 +23,9 @@ function carregarMelhoresNotasApi(url) {
         .then(res => res.json())
 }
 
-
 function carregarLancamentosApi() {
-    const hoje = new Date().toISOString().split('T')[0];
-    return fetch().then(res => res.json());
+    return fetch(`${API_BASE_URL}/lancamentos`)
+        .then(res => res.json());
 }
 
 
