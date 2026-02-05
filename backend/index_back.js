@@ -6,16 +6,25 @@ require("dotenv").config();
 const app = express();
 const PORT = 3000;
 
+
 app.use(cors());
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '../frontEnd')));
 
+
 const API_KEY = process.env.API_KEY;
 
-// 🔥 Filmes populares
-app.get("/api/populares", async (req, res) => {
-  const page = req.query.page || 1;
+
+app.listen(PORT, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}
+    `);
+    
+  });
+  
+  // 🔥 Filmes populares
+  app.get("/api/populares", async (req, res) => {
+    const page = req.query.page || 1;
   
   try {
     const response = await fetch(
@@ -24,6 +33,7 @@ app.get("/api/populares", async (req, res) => {
     
     const data = await response.json();
     res.json(data);
+    
   } catch (error) {
     res.status(500).json({ error: "Erro ao buscar filmes populares" });
   }

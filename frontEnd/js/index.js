@@ -141,7 +141,7 @@ function carregarFilmesMelhoresNotas() {
 
     // Vai buscar em 5 páginas de resultados
     for (let i = 1; i <= 10; i++) {
-        const url = `http://localhost:3001/api/melhoresNotas?page=${i}`;
+        const url = `https://movies-api-dlx6.onrender.com/api/melhoresNotas?page=${i}`;
 
 
          carregarMelhoresNotasApi(url).then(dados => {
