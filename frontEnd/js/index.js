@@ -71,7 +71,7 @@ function esconderFeedback() {
 // Função que busca filmes com base na pesquisa do usuário
 function buscarFilme() {
     const query = document.getElementById("inputBusca").value.trim();
-    
+
     if (!query) {
         mostrarFeedback("🔍 Digite o nome de um filme para ver detalhes e trailers");
         feedback.classList.add('feedback_info')
@@ -140,7 +140,7 @@ function carregarFilmesMelhoresNotas() {
     // Vai buscar em 5 páginas de resultados
     for (let i = 1; i <= 5; i++) {
         const url = `https://movies-api-dlx6.onrender.com/api/melhoresNotas?page=${i}`;
-        
+
 
         carregarMelhoresNotasApi(url).then(dados => {
 
@@ -154,7 +154,7 @@ function carregarFilmesMelhoresNotas() {
                 }
             });
         })
-        .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
+            .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
     }
 }
 
@@ -164,19 +164,24 @@ function carregarLancamentos() {
 
     mostrarLoading();
 
-    carregarLancamentosApi()
-        .then(dados => {
-            esconderFeedback();
+    for (let i = 1; i <= 5; i++) {
+        const url = `https://movies-api-dlx6.onrender.com/api/lancamentos?page=${i}`;
 
-            dados.results.forEach(filme => {
-                const card = criarCardFilme(filme)
-                container.appendChild(card)
+
+        carregarLancamentosApi(url)
+            .then(dados => {
+                esconderFeedback();
+
+                dados.results.forEach(filme => {
+                    const card = criarCardFilme(filme)
+                    container.appendChild(card)
+                });
+            })
+            .catch(() => {
+                mostrarFeedback("Erro ao carregar lançamentos");
+                feedback.classList.add("feedback_error");
             });
-        })
-        .catch(() => {
-            mostrarFeedback("Erro ao carregar lançamentos");
-            feedback.classList.add("feedback_error");
-        });
+    }
 }
 
 // Quando o site carregar, adiciona o evento de clique no botão de busca
