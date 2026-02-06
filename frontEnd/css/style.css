@@ -8,7 +8,6 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
   border-bottom: solid 2px #fff;
 }
 
@@ -26,6 +25,7 @@ footer {
   text-align: center;
   border-top: 2px solid #ffffff;
   padding: 2rem;
+  margin: 0;
   background-color: #311919;
 
 }
@@ -34,12 +34,14 @@ footer {
   margin: 1rem;
 }
 
-.github_icon img, .linkedin_icon img {
- height: 2.5rem;
+.github_icon img,
+.linkedin_icon img {
+  height: 2.5rem;
 
 }
 
-.github_icon , .linkedin_icon  {
+.github_icon,
+.linkedin_icon {
   height: 5rem;
   padding: 0.5rem;
 }
@@ -63,7 +65,7 @@ input {
 input:focus {
   transition: all 0.5s ease-in-out;
   background: #431313;
-  border:solid 2px #fff;
+  border: solid 2px #fff;
   outline: #fff;
 }
 
@@ -102,7 +104,10 @@ input::placeholder {
 .container {
   display: grid;
   padding: 2rem;
-  min-height: 70vh;
+  min-height: 100vh;
+  background-image: url('/frontEnd/img/alex-litvin-MAYsdoYpGuk-unsplash.jpg');
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .container_gif {
@@ -211,7 +216,7 @@ input::placeholder {
   margin-top: 15px;
   border-top: solid 2px #fff;
   background: #431313;
-  border-radius: 0 0 0.5rem 0.5rem ;
+  border-radius: 0 0 0.5rem 0.5rem;
   padding: 0.8rem;
   font-size: 1rem;
   text-align: center;
@@ -257,10 +262,10 @@ input::placeholder {
   display: flex;
   justify-self: center;
   align-self: center;
-  color: #ccc;
-  font-size: 1rem;
+  color: #ffffff;
+  padding: 1rem;
+  font-size: 1.2rem;
   margin: 1rem 0;
-  opacity: 0;
   animation: fadeUp 0.6s ease-out forwards;
 }
 
@@ -276,6 +281,7 @@ input::placeholder {
 
 .feedback_info {
   justify-content: center;
+  text-align: center;
   padding: 1rem;
   font-size: 1.2rem;
   width: 50%;
@@ -288,40 +294,82 @@ input::placeholder {
     opacity: 0;
     transform: translateY(10px);
   }
-
+  
   to {
     opacity: 0.8;
     transform: translateY(0);
   }
 }
 
+@media (max-width: 768px) {
 
-
-@media (max-width: 700px) {
   .card {
     margin: 1rem;
-    padding: 8px;
+    padding: 0.5rem;
   }
-
+  
   .card img {
-    max-height: 250px;
+    max-height: 15rem;
   }
-
+  
   .card p {
     font-size: 14px;
     min-height: 10rem;
     max-height: 10rem;
   }
-
+  
   .card h3 {
-    font-size: 14px;
+    font-size: 1.1rem;
   }
-
+  
   .card span {
-    font-size: 12px;
+    font-size: 1rem;
+  }
+  
+  .container {
+    background-image: url('/frontEnd/img/amina-i9QI5bXDXmc-unsplash.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 0.5rem;
   }
 
+  .trailer-container {
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: center;
+  }
+
+  .botao-trailer, .sem_trailer {
+    width: 100%;
+    text-align: center;
+  }
+  
   .card-filmes {
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   }
+  
+  nav {
+    flex-direction: column;
+    padding: 1rem 2rem;
+  }
+  
+  .btns_nav {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  input {
+    width: 100%;
+  }
+
+  .feedback {
+    width: 100%;
+    justify-content: center;
+  }
+
+  h1 {
+    margin: 0;
+  }
+  
 }

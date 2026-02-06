@@ -24,7 +24,7 @@ function carregarMelhoresNotasApi(url) {
 }
 
 function carregarLancamentosApi() {
-    return fetch(`${API_BASE_URL}/lancamentos`)
+    return fetch(url)
         .then(res => res.json());
 }
 

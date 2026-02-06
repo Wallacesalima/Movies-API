@@ -82,6 +82,22 @@ app.get("/api/melhoresNotas", async (req, res) => {
     res.json(data);
     
   } catch (error) {
-    res.status(500).json({ error: "Erro ao buscar filmes populares" });
+    res.status(500).json({ error: "Erro ao buscar filmes com as melhores notas" });
+  }
+});
+
+app.get("/api/lancamentos", async (req, res) => {
+  const page = req.query.page || 1;
+  
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=pt-BR&page=${page}`
+    );
+    
+    const data = await response.json();
+    res.json(data);
+    
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar filmes em lançamento" });
   }
 });
