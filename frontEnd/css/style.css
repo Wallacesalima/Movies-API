@@ -9,11 +9,12 @@ nav {
   justify-content: space-between;
   align-items: center;
   border-bottom: solid 2px #fff;
+  padding: 1rem;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background: #431313;
+  /* background: #431313; */
   color: #fff;
 }
 
@@ -31,13 +32,19 @@ footer {
 }
 
 svg {
+  stroke: #311919;
   width: 2rem;
-  margin: 0 0.5rem 0 2rem;
 }
 
 .container_logo {
   display:flex ;
   align-items: center;
+  justify-items: center;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius:1rem;
+  max-height: 3.5rem;
+  border: double 0.5rem #000000;
 }
 
 .container_footer {
@@ -57,11 +64,17 @@ svg {
 }
 
 h1 {
-  color: #ffffff;
+  color: #311919;
   padding: 1rem 0;
   margin: 0.5rem 0;
   font-family: monospace;
 
+}
+
+.container_input {
+  display: flex;
+  width: 80%;
+  justify-content: end;
 }
 
 input {
@@ -70,8 +83,11 @@ input {
   border: none;
   outline: none;
   color: #ffffff;
-  width: 50%;
+  width: 70%;
+  margin: 0 0 0 3rem;
   text-align: center;
+  height: 3.5rem;
+  border-radius: 1rem 0 0 1rem;
 }
 
 input:focus {
@@ -79,6 +95,7 @@ input:focus {
   background: #431313;
   border: solid 2px #fff;
   outline: #fff;
+  border-radius: none;
 }
 
 input::placeholder {
@@ -96,8 +113,9 @@ input::placeholder {
   cursor: pointer;
   border: solid 2px #fff;
   font-size: 1.7rem;
-  width: 4rem;
-  height: 3.7rem;
+  width: 10%;
+  height: 3.5rem;
+  border-radius: 0 1rem 1rem 0;
 }
 
 .busca-botao:hover {
@@ -132,18 +150,22 @@ input::placeholder {
 
 .btns_nav {
   display: flex;
-  gap: 3rem;
-  margin: 0 2rem;
+  justify-content: center;
+  gap: 5rem;
+  width: 100%;
 }
 
 .btns_nav_style {
   padding: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
   background-color: #311919;
   color: #fff;
   border-radius: 1rem;
-  min-width: 12rem;
+  max-width: 15rem;
+  min-width: 15rem;
+  min-height: 3.5rem;
+  max-height: 3.5rem;
   border: solid 2px #fff;
 }
 
@@ -152,12 +174,11 @@ input::placeholder {
   background-color: #fff;
   cursor: pointer;
   transition: all 0.5s linear;
+  border: double 5px #311919;
 }
 
 .btns_nav_style:active {
-  background-color: #222222;
-  color: #fff;
-  transition: none;
+  border: solid 5px #311919;
 }
 
 
@@ -363,18 +384,34 @@ input::placeholder {
   }
   
   nav {
+    width: 100%;
     flex-direction: column;
-    padding: 1rem 2rem;
+    gap: 2rem;
   }
   
   .btns_nav {
     flex-direction: column;
+    align-items: center;
     gap: 1rem;
     width: 100%;
   }
 
-  input {
+  .btns_nav_style {
+    min-width: 80%;
+  }
+
+  .container_input {
     width: 100%;
+    align-self: center;
+  }
+
+  input {
+    width: 80%;
+    margin: 0;
+  }
+
+  .busca-botao {
+    width: 20%;
   }
 
   .feedback {

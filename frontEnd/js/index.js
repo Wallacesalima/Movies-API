@@ -187,17 +187,22 @@ function carregarProximosFilmes() {
     const container = document.querySelector(".card-filmes");
     container.textContent = '';
     mostrarLoading();
+
+
     
-    for (let i = 1; i <= 1; i++) {
-        
+    for (let i = 1; i <= 50; i++) {
         const url = `https://movies-api-dlx6.onrender.com/api/nextFilmes?page=${i}`;
         
         
         carregarProximosApi(url).then(dados => {
             dados.results.forEach(filme => {
+                if(filme.release_date >= '2026-02-06' && filme.popularity >= 10.0) {
                     const card = criarCardFilme(filme)
                     container.appendChild(card)
-                    esconderFeedback()
+                }
+                esconderFeedback()
+                feedback.classList.add('feedback_info')
+                mostrarFeedback('Digite um filme no campo acima e clique na "🔍" para busca-lo. ')
             });
         })
             .catch(() => {
@@ -209,7 +214,6 @@ function carregarProximosFilmes() {
 // Quando o site carregar, adiciona o evento de clique no botão de busca
 document.addEventListener("DOMContentLoaded", () => {
 
-    feedback.classList.add('feedback_info')
     mostrarFeedback('Digite um filme no campo acima e clique na "🔍" para busca-lo.')
     carregarProximosFilmes()
 
