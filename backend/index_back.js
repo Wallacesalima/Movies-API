@@ -101,3 +101,19 @@ app.get("/api/lancamentos", async (req, res) => {
     res.status(500).json({ error: "Erro ao buscar filmes em lançamento" });
   }
 });
+
+app.get("/api/nextFilmes", async (req, res) => {
+  const page = req.query.page || 1;
+  
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=pt-BR&page=${page}`
+    );
+    
+    const data = await response.json();
+    res.json(data);
+    
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar filmes que seram lançados" });
+  }
+});

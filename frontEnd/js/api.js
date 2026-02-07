@@ -23,7 +23,11 @@ function carregarMelhoresNotasApi(url) {
         .then(res => res.json())
 }
 
-function carregarLancamentosApi() {
+function carregarLancamentosApi(url) {
+    return fetch(url)
+        .then(res => res.json());
+}
+function carregarProximosApi(url) {
     return fetch(url)
         .then(res => res.json());
 }

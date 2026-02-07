@@ -30,6 +30,16 @@ footer {
 
 }
 
+svg {
+  width: 2rem;
+  margin: 0 0.5rem 0 2rem;
+}
+
+.container_logo {
+  display:flex ;
+  align-items: center;
+}
+
 .container_footer {
   margin: 1rem;
 }
@@ -48,8 +58,10 @@ footer {
 
 h1 {
   color: #ffffff;
-  padding: 1rem;
-  margin: 0.5rem;
+  padding: 1rem 0;
+  margin: 0.5rem 0;
+  font-family: monospace;
+
 }
 
 input {
@@ -105,9 +117,10 @@ input::placeholder {
   display: grid;
   padding: 2rem;
   min-height: 100vh;
-  background-image: url('/frontEnd/img/alex-litvin-MAYsdoYpGuk-unsplash.jpg');
+  background-image: url('/frontEnd/img/Whisk_5da42f2111cbc0da5f84e63436bc5f65eg.png');
   background-size: cover;
   background-attachment: fixed;
+  background-position: center center;
 }
 
 .container_gif {
@@ -327,7 +340,8 @@ input::placeholder {
   }
   
   .container {
-    background-image: url('/frontEnd/img/amina-i9QI5bXDXmc-unsplash.jpg');
+    background-image: url('/frontEnd/img/Whisk_5da42f2111cbc0da5f84e63436bc5f65eg.png');
+
     background-size: cover;
     background-attachment: fixed;
     padding: 0.5rem;

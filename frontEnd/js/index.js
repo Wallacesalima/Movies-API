@@ -136,7 +136,6 @@ function carregarFilmesMelhoresNotas() {
     mostrarLoading()
     container.textContent = ''
 
-
     // Vai buscar em 5 páginas de resultados
     for (let i = 1; i <= 5; i++) {
         const url = `https://movies-api-dlx6.onrender.com/api/melhoresNotas?page=${i}`;
@@ -162,21 +161,45 @@ function carregarLancamentos() {
     const container = document.querySelector(".card-filmes");
     container.textContent = '';
 
+    
+    
     mostrarLoading();
-
-    for (let i = 1; i <= 5; i++) {
+    
+    for (let i = 1; i <= 1; i++) {
+        
         const url = `https://movies-api-dlx6.onrender.com/api/lancamentos?page=${i}`;
-
-
-        carregarLancamentosApi(url)
-            .then(dados => {
-                esconderFeedback();
-
-                dados.results.forEach(filme => {
+        
+        
+        carregarLancamentosApi(url).then(dados => {
+            dados.results.forEach(filme => {
                     const card = criarCardFilme(filme)
                     container.appendChild(card)
-                });
-            })
+                    esconderFeedback()
+            });
+        })
+            .catch(() => {
+                mostrarFeedback("Erro ao carregar lançamentos");
+                feedback.classList.add("feedback_error");
+            });
+    }
+}
+function carregarProximosFilmes() {
+    const container = document.querySelector(".card-filmes");
+    container.textContent = '';
+    mostrarLoading();
+    
+    for (let i = 1; i <= 1; i++) {
+        
+        const url = `https://movies-api-dlx6.onrender.com/api/nextFilmes?page=${i}`;
+        
+        
+        carregarLancamentosApi(url).then(dados => {
+            dados.results.forEach(filme => {
+                    const card = criarCardFilme(filme)
+                    container.appendChild(card)
+                    esconderFeedback()
+            });
+        })
             .catch(() => {
                 mostrarFeedback("Erro ao carregar lançamentos");
                 feedback.classList.add("feedback_error");
@@ -189,6 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     feedback.classList.add('feedback_info')
     mostrarFeedback('Digite um filme no campo acima e clique na "🔍" para busca-lo.')
+    carregarProximosFilmes()
 
     document.getElementById("botaoBusca").addEventListener("click", buscarFilme);
 
