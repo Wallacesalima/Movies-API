@@ -193,7 +193,7 @@ function carregarProximosFilmes() {
         const url = `https://movies-api-dlx6.onrender.com/api/nextFilmes?page=${i}`;
         
         
-        carregarLancamentosApi(url).then(dados => {
+        carregarProximosApi(url).then(dados => {
             dados.results.forEach(filme => {
                     const card = criarCardFilme(filme)
                     container.appendChild(card)
@@ -201,8 +201,7 @@ function carregarProximosFilmes() {
             });
         })
             .catch(() => {
-                mostrarFeedback("Erro ao carregar lançamentos");
-                feedback.classList.add("feedback_error");
+                mostrarFeedback("Erro ao carregar lançamentos futuros");
             });
     }
 }
