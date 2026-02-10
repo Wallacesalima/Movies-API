@@ -1,0 +1,124 @@
+@media (max-width: 768px) {
+
+  .card {
+    margin: 1rem;
+    padding: 0.5rem;
+  }
+
+  .card img {
+    max-height: 15rem;
+  }
+
+  .card p {
+    font-size: 14px;
+    min-height: 10rem;
+    max-height: 10rem;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+
+  .card span {
+    font-size: 1rem;
+  }
+
+  .container {
+    background-size: cover;
+    background-attachment: fixed;
+    padding: 0.5rem;
+  }
+
+  .trailer-container {
+    display: flex;
+    margin-top: 1.5rem;
+    justify-content: center;
+  }
+
+  .botao-trailer,
+  .sem_trailer {
+    width: 100%;
+    text-align: center;
+  }
+
+  .card-filmes {
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  }
+
+  header {
+    width: 100%;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  nav {
+    width: 100%;
+    height: 13rem;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .container_input {
+    margin: 0;
+  }
+
+  .container_logo {
+    margin: 0;
+  }
+
+  .btns_nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 70%;
+  }
+
+  .btns_nav_style {
+    min-width: 80%;
+  }
+
+  input {
+    width: 80%;
+    margin: 0;
+  }
+
+  .busca-botao {
+    width: 20%;
+  }
+
+  .feedback {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .feedback_error {
+    margin: 2rem 0;
+    padding: 1rem;
+    font-size: 1.3rem;
+    height: 100%;
+    width: 100%;
+  }
+
+  h1 {
+    margin: 0;
+  }
+
+  .container_gif_introducao {
+    text-align: center;
+    padding: 3rem 1rem;
+    width: 80%;
+    margin: 1rem 0;
+    /* width: 20rem; */
+    font-family: monospace;
+    transition: all 0.5s ease;
+  }
+
+  .container_gif_introducao h2 {
+    border: none ;
+    width: 100%;
+    animation: flutuar 5s linear infinite;
+  }
+
+
+
+}

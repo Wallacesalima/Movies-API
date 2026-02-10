@@ -48,7 +48,13 @@ const feedback = document.getElementById('feedback');
 
 function criarIntroducao() {
     const container = document.querySelector(".card-filmes");
-    container.innerHTML = ''
+    container.innerHTML = `   
+    <div class="container_gif_introducao shake efeito_vidro">
+      <img class="gif_introduction" src="frontEnd/img/introduction_photo.png" alt="introdução">
+      <h2>EXPLORE FILMES</h2>
+      <p> Faça uma busca ou selecione uma categoria para começar.
+    </div>
+    `
 }
 
 function mostrarFeedback(mensagem) {
@@ -61,40 +67,45 @@ function mostrarLoading() {
     feedback.innerHTML = `
       <div class="container_gif">
         <img class="gif_carregando" src="frontEnd/assets/gifs/loader-9342.gif" alt="Carregando">
-        <p>Buscando filme...</p>
+        <p>Carregando filmes...</p>
       </div>
     `;
 }
 
 function esconderFeedback() {
     feedback.classList.add('hidden');
-    feedback.classList.remove('feedback_error', 'feedback_info','feedback');
+    feedback.classList.remove('feedback_error', 'feedback_info', 'feedback');
     feedback.textContent = ''
+}
+
+function limparContainer() {
+    const container = document.querySelector(".card-filmes");
+    container.innerHTML = ""
 }
 
 // Função que busca filmes com base na pesquisa do usuário
 function buscarFilme() {
+    const container = document.querySelector(".card-filmes");
     const query = document.getElementById("inputBusca").value.trim();
 
     if (!query) {
         mostrarFeedback("🔍 Digite o nome de um filme para ver detalhes e trailers");
         feedback.classList.add('feedback_info')
+        limparContainer()
         return;
     }
-
+    
     esconderFeedback()
-
-    const container = document.querySelector(".card-filmes");
-
-    container.innerHTML = ""; // Limpa os resultados anteriores
+    limparContainer()
     mostrarLoading()
-
+    
     buscarFilmeApi(query).then(dados => {
         esconderFeedback()
-
+        
         if (!dados.results.length) {
             mostrarFeedback('Nenhum filme encontrado, digite um nome de filme valido.')
             feedback.classList.add('feedback_error')
+            limparContainer() 
             return;
         }
 
@@ -218,14 +229,13 @@ function carregarProximosFilmes() {
 
 // Quando o site carregar, adiciona o evento de clique no botão de busca
 document.addEventListener("DOMContentLoaded", () => {
-
+    esconderFeedback()
+    criarIntroducao()
 
     document.getElementById("botaoBusca").addEventListener("click", buscarFilme);
 
-    document.getElementById("inputBusca")
-        .addEventListener("keydown", (event) => {
+    document.addEventListener("keydown", (event) => {
             if (event.key === "Enter") buscarFilme();
-
         });
 
     document.getElementById("populares").addEventListener('click', () => {

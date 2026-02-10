@@ -1,0 +1,40 @@
+header {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  width: 60%;
+  gap: 5rem;
+  margin: 2rem 0 1rem 0;
+}
+
+nav {
+  display: flex;
+  height: 4rem;
+  align-items: center;
+}
+
+
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  text-align: center;
+  padding: 1rem;
+  margin: 0;
+  background: #0000008f;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  min-height: 60vh;
+}
+
+.card-filmes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-evenly;
+}

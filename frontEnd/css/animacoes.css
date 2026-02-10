@@ -1,0 +1,59 @@
+@keyframes flutuar {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+    /* Sobe 20 pixels */
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+/* Animação das letras */
+@keyframes digitar {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 55%;
+  }
+}
+
+/* Animação do cursor piscando */
+@keyframes cursor {
+
+  from,
+  to {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: #431313;
+  }
+}
+
+@keyframes subirERevelar {
+  from {
+    opacity: 0;
+    transform: translateY(20px); /* Começa um pouco abaixo */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);    /* Sobe para a posição original */
+  }
+}
+
+.efeito_vidro {
+   /* From https://css.glass */
+  background: #00000037;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 30px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
