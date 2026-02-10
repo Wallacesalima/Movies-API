@@ -3,19 +3,30 @@
   margin: 0;
 }
 
-nav {
-  background: #311919;
+header {
   display: flex;
-  justify-content: space-between;
+  justify-self: center;
   align-items: center;
-  border-bottom: solid 2px #fff;
-  padding: 1rem;
+  width: 60%;
+  gap: 5rem;
+  margin: 2rem 0 1rem 0;
+}
+
+nav {
+  display: flex;
+  height: 4rem;
+  align-items: center;
 }
 
 body {
   font-family: Arial, sans-serif;
   /* background: #431313; */
   color: #fff;
+  background: linear-gradient(rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.7)), url('/frontEnd/img/Whisk_5da42f2111cbc0da5f84e63436bc5f65eg.png');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
 }
 
 footer {
@@ -32,19 +43,26 @@ footer {
 }
 
 svg {
-  stroke: #311919;
-  width: 2rem;
+  stroke: #ffffff;
+  width: 1.5rem;
 }
 
 .container_logo {
-  display:flex ;
+  display: flex;
+  cursor: pointer;
   align-items: center;
   justify-items: center;
-  background-color: #fff;
-  padding: 1rem;
-  border-radius:1rem;
-  max-height: 3.5rem;
-  border: double 0.5rem #000000;
+  background-color: #ffffff00;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  max-height: 3rem;
+  text-decoration: dashed underline #431313;
+  border: solid #ffffff00 1px;
+}
+
+.container_logo:hover {
+  border: solid #fff 1px;
+  text-decoration: solid underline #ffffff;
 }
 
 .container_footer {
@@ -64,7 +82,7 @@ svg {
 }
 
 h1 {
-  color: #311919;
+  color: #ffffff;
   padding: 1rem 0;
   margin: 0.5rem 0;
   font-family: monospace;
@@ -74,32 +92,35 @@ h1 {
 .container_input {
   display: flex;
   width: 80%;
-  justify-content: end;
+  justify-content: center;
+  margin: 2rem;
 }
 
 input {
+  background: none;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
   border: none;
   outline: none;
   color: #ffffff;
-  width: 70%;
-  margin: 0 0 0 3rem;
+  width: 100%;
   text-align: center;
-  height: 3.5rem;
-  border-radius: 1rem 0 0 1rem;
+  height: 2.5rem;
+  border-radius: 0.5rem 0 0 0.5rem;
+  border: solid 1px #fff;
 }
 
 input:focus {
+  color: #fff;
   transition: all 0.5s ease-in-out;
-  background: #431313;
-  border: solid 2px #fff;
+  background: #43131380;
+  border: solid 1px #fff;
   outline: #fff;
   border-radius: none;
 }
 
 input::placeholder {
-  color: #431313;
+  color: #ffffff50;
 }
 
 .busca {
@@ -109,13 +130,12 @@ input::placeholder {
 .busca-botao {
   text-align: center;
   background: #431313;
-  color: white;
   cursor: pointer;
-  border: solid 2px #fff;
+  border: solid 1px #fff;
   font-size: 1.7rem;
-  width: 10%;
-  height: 3.5rem;
-  border-radius: 0 1rem 1rem 0;
+  min-width: 4rem;
+  height: 2.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .busca-botao:hover {
@@ -131,14 +151,16 @@ input::placeholder {
   justify-content: center;
 }
 
+.logo-button {
+  background: none;
+  border: none;
+}
+
 .container {
-  display: grid;
-  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
   min-height: 100vh;
-  background-image: url('/frontEnd/img/Whisk_5da42f2111cbc0da5f84e63436bc5f65eg.png');
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center center;
 }
 
 .container_gif {
@@ -151,34 +173,29 @@ input::placeholder {
 .btns_nav {
   display: flex;
   justify-content: center;
-  gap: 5rem;
+  gap: 2rem;
   width: 100%;
 }
 
 .btns_nav_style {
-  padding: 0.5rem;
   font-size: 1rem;
   font-weight: 600;
-  background-color: #311919;
+  background: none;
   color: #fff;
-  border-radius: 1rem;
-  max-width: 15rem;
-  min-width: 15rem;
-  min-height: 3.5rem;
-  max-height: 3.5rem;
-  border: solid 2px #fff;
+  border: none;
+  min-width: 10rem;
+  min-height: 2.5rem;
+  border-bottom: solid 2px none;
 }
 
 .btns_nav_style:hover {
-  color: #311919;
-  background-color: #fff;
+  background-color: none;
   cursor: pointer;
-  transition: all 0.5s linear;
-  border: double 5px #311919;
+  border-bottom: solid 2px #ffffff;
 }
 
 .btns_nav_style:active {
-  border: solid 5px #311919;
+  border-bottom: solid 2px #311919;
 }
 
 
@@ -260,6 +277,8 @@ input::placeholder {
 }
 
 .sem_trailer {
+  width: 100%;
+  text-align: center;
   display: inline-block;
   margin-top: 1rem;
   padding: 6px 12px;
@@ -272,6 +291,8 @@ input::placeholder {
 }
 
 .botao-trailer {
+  width: 100%;
+  text-align: center;
   display: inline-block;
   margin-top: 1rem;
   padding: 6px 12px;
@@ -304,11 +325,13 @@ input::placeholder {
 }
 
 .feedback_error {
-  justify-content: center;
+  justify-self: center;
+  align-content: center;
   text-align: center;
   padding: 1rem;
   font-size: 2rem;
   width: 35%;
+  height: 10rem;
   background-color: #e50914cd;
   animation: fadeUp 0.7s ease-out forwards;
 }
@@ -328,7 +351,7 @@ input::placeholder {
     opacity: 0;
     transform: translateY(10px);
   }
-  
+
   to {
     opacity: 0.8;
     transform: translateY(0);
@@ -341,28 +364,26 @@ input::placeholder {
     margin: 1rem;
     padding: 0.5rem;
   }
-  
+
   .card img {
     max-height: 15rem;
   }
-  
+
   .card p {
     font-size: 14px;
     min-height: 10rem;
     max-height: 10rem;
   }
-  
+
   .card h3 {
     font-size: 1.1rem;
   }
-  
+
   .card span {
     font-size: 1rem;
   }
-  
-  .container {
-    background-image: url('/frontEnd/img/Whisk_5da42f2111cbc0da5f84e63436bc5f65eg.png');
 
+  .container {
     background-size: cover;
     background-attachment: fixed;
     padding: 0.5rem;
@@ -374,21 +395,22 @@ input::placeholder {
     justify-content: center;
   }
 
-  .botao-trailer, .sem_trailer {
+  .botao-trailer,
+  .sem_trailer {
     width: 100%;
     text-align: center;
   }
-  
+
   .card-filmes {
     grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   }
-  
-  nav {
+
+  header {
     width: 100%;
     flex-direction: column;
     gap: 2rem;
   }
-  
+
   .btns_nav {
     flex-direction: column;
     align-items: center;
@@ -422,5 +444,5 @@ input::placeholder {
   h1 {
     margin: 0;
   }
-  
+
 }

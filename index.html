@@ -10,8 +10,8 @@
 </head>
 
 <body>
-  <nav>
-    <div class="container_logo">
+  <header>
+    <div class="container_logo" onclick="location.reload()">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
       stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
       class="lucide lucide-clapperboard-icon lucide-clapperboard">
@@ -23,23 +23,25 @@
     <h1>MoviesApp</h1>
     </div>
     <div class="container_input">
-      <input type="text" id="inputBusca" placeholder="Digite o nome do filme">
+      <input type="text" id="inputBusca" placeholder="Digite o nome do filme...">
       <button id="botaoBusca" class="busca-botao">🔎</button>
+    </div>
+  </header>
+  <nav>
+    <div class="btns_nav">
+      <button id="populares" class="btns_nav_style">Populares</button>
+      <button id="melhores_notas" class="btns_nav_style">Melhores</button>
+      <button id="lancamento" class="btns_nav_style">Lançamentos</button>
+      <button id="lancamento-futuros" class="btns_nav_style">Próxmos</button>
     </div>
   </nav>
   
   <div class="container">
-    <div class="btns_nav">
-      <button id="populares" class="btns_nav_style">Populares</button>
-      <button id="melhores_notas" class="btns_nav_style">Melhores notas</button>
-      <button id="lancamento" class="btns_nav_style">Lançamentos recentes</button>
-      <button id="lancamento-futuros" class="btns_nav_style">Próxmos lançamentos</button>
-    </div>
-    <div id="feedback" class="feedback hidden"></div>
-    <section class="section-filmes">
-      <div class="busca centralizar">
-      </div>
-      <div class="card-filmes"></div>
+  <div id="feedback" class="feedback hidden"></div>
+  <section class="section-filmes">
+    <!-- <div class="busca centralizar">
+    </div> -->
+    <div class="card-filmes"></div>
     </section>
   </div>
 

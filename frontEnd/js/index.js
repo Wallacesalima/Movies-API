@@ -46,6 +46,10 @@ function criarCardFilme(filme) {
 
 const feedback = document.getElementById('feedback');
 
+function criarIntroducao() {
+    const container = document.querySelector(".card-filmes");
+    container.innerHTML = ''
+}
 
 function mostrarFeedback(mensagem) {
     feedback.textContent = mensagem;
@@ -64,7 +68,7 @@ function mostrarLoading() {
 
 function esconderFeedback() {
     feedback.classList.add('hidden');
-    feedback.classList.remove('feedback_error', 'feedback_info');
+    feedback.classList.remove('feedback_error', 'feedback_info','feedback');
     feedback.textContent = ''
 }
 
@@ -161,20 +165,18 @@ function carregarLancamentos() {
     const container = document.querySelector(".card-filmes");
     container.textContent = '';
 
-    
-    
     mostrarLoading();
-    
+
     for (let i = 1; i <= 1; i++) {
-        
+
         const url = `https://movies-api-dlx6.onrender.com/api/lancamentos?page=${i}`;
-        
-        
+
+
         carregarLancamentosApi(url).then(dados => {
             dados.results.forEach(filme => {
-                    const card = criarCardFilme(filme)
-                    container.appendChild(card)
-                    esconderFeedback()
+                const card = criarCardFilme(filme)
+                container.appendChild(card)
+                esconderFeedback()
             });
         })
             .catch(() => {
@@ -188,21 +190,24 @@ function carregarProximosFilmes() {
     container.textContent = '';
     mostrarLoading();
 
+    const data = new Date();
+    const dia = String(data.getDate()).padStart(2, '0');
+    const mes = String(data.getMonth() + 1).padStart(2, '0'); // Mês é 0-11
+    const ano = data.getFullYear();
 
-    
+    const dataAtual = `${ano}-${mes}-${dia}`;
+    console.log(dataAtual); // Ex: 09-02-2026
+
     for (let i = 1; i <= 50; i++) {
         const url = `https://movies-api-dlx6.onrender.com/api/nextFilmes?page=${i}`;
-        
-        
+
         carregarProximosApi(url).then(dados => {
             dados.results.forEach(filme => {
-                if(filme.release_date >= '2026-02-06' && filme.popularity >= 10.0) {
+                if (filme.release_date >= dataAtual && filme.popularity >= 10.0) {
                     const card = criarCardFilme(filme)
                     container.appendChild(card)
                 }
                 esconderFeedback()
-                feedback.classList.add('feedback_info')
-                mostrarFeedback('Digite um filme no campo acima e clique na "🔍" para busca-lo. ')
             });
         })
             .catch(() => {
@@ -214,8 +219,6 @@ function carregarProximosFilmes() {
 // Quando o site carregar, adiciona o evento de clique no botão de busca
 document.addEventListener("DOMContentLoaded", () => {
 
-    mostrarFeedback('Digite um filme no campo acima e clique na "🔍" para busca-lo.')
-    carregarProximosFilmes()
 
     document.getElementById("botaoBusca").addEventListener("click", buscarFilme);
 
@@ -232,6 +235,8 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("melhores_notas").addEventListener('click', carregarFilmesMelhoresNotas)
 
     document.getElementById("lancamento").addEventListener('click', carregarLancamentos)
+
+    document.getElementById("lancamento-futuros").addEventListener('click', carregarProximosFilmes)
 
 });
 

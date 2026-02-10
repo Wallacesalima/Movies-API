@@ -13,10 +13,10 @@ function carregarTrailer(idFilme, card) {
             trailerContainer.innerHTML = `
             <a href="https://www.youtube.com/watch?v=${trailer.key}" 
                target="_blank" 
-               class="botao-trailer">🎬 Ver Trailer</a>`;
+               class="botao-trailer">Clique para ver o Trailer</a>`;
         } else {
             // Se não tiver trailer
-            trailerContainer.innerHTML = `<a class="sem_trailer" >Trailer não disponível.</a>`;
+            trailerContainer.innerHTML = `<a class="sem_trailer" >Trailer indisponível.</a>`;
         }
     });
 }
