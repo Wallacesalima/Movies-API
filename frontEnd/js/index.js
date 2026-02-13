@@ -233,7 +233,6 @@ function carregarProximosFilmes() {
     const ano = data.getFullYear();
 
     const dataAtual = `${ano}-${mes}-${dia}`;
-    console.log(dataAtual); // Ex: 09-02-2026
 
     for (let i = 1; i <= 5; i++) {
         const url = `https://movies-api-dlx6.onrender.com/api/nextFilmes?page=${i}`;
@@ -264,7 +263,10 @@ criarIntroducao()
 document.addEventListener("DOMContentLoaded", () => {
     esconderFeedback()
 
-    document.getElementById("botaoBusca").addEventListener("click", buscarFilme);
+    document.getElementById("botaoBusca").addEventListener("click", function () {
+        document.querySelector('.btns_nav_style_active').classList.remove('btns_nav_style_active')
+        buscarFilme()
+    });
 
     document.addEventListener("keydown", (event) => {
         if (event.key === "Enter") buscarFilme();
@@ -279,6 +281,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("melhores_notas").addEventListener('click', function () {
         removerAtivos()
         this.classList.add('btns_nav_style_active')
+        console.log(this)
         carregarFilmesMelhoresNotas()
     })
 
