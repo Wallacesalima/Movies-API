@@ -1,12 +1,14 @@
-
 .container_gif_introducao {
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding: 1rem 8rem;
+  padding: 1rem 2rem;
   margin: 2rem 0;
   font-family: monospace;
-  transition: all 2s ease;
+  /* transition: all 2s ease; */
+  border-radius: 1rem;
+  width: 60%;
+  height: auto;
 }
 
 .container_gif_introducao:hover {
@@ -31,30 +33,27 @@
 }
 
 .container_gif_introducao p {
+  text-align: center;
   font-size: 1.2rem;
-  animation: subirERevelar 1.5s 0.5s forwards infinite alternate;
-}
+  animation: flutuar 7s linear infinite;
 
-.gif_introduction {
-  width: 15rem;
-  animation: flutuar 3s linear infinite;
 }
 
 .container_logo {
   display: flex;
   cursor: pointer;
+  justify-content: center;
   align-items: center;
-  justify-items: center;
   background-color: #ffffff00;
   padding: 0.5rem;
   border-radius: 1rem;
-  max-height: 3rem;
+  height: 3rem;
+  width: 20%;
   text-decoration: dashed underline #431313;
   border: solid #ffffff00 1px;
 }
 
 .container_logo:hover {
-  border: solid #fff 1px;
   text-decoration: solid underline #ffffff;
 }
 
@@ -75,12 +74,18 @@
   padding: 0.5rem;
 }
 
-
 .container_input {
   display: flex;
-  width: 80%;
-  justify-content: start;
+  width: 60%;
+  justify-content: space-between;
   margin: 2rem;
+  border: solid 2px #ffffff00;
+  border-bottom: 2px solid #ffffff;
+  transition: all 0.1s ease-in-out;
+}
+
+.container_input:hover {
+  border-bottom: solid 2px #431313;
 }
 
 .logo-button {
@@ -103,4 +108,60 @@
 
 .hidden {
   display: none;
+}
+
+.img_perfil {
+  height: 2rem;
+  background: #fff;
+  border-radius: 50%;
+  padding: 0.3rem;
+}
+
+.container_perfil {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 20%;
+  justify-content: center;
+}
+
+.container_Top3 {
+  display: flex;
+  width: 100%;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.slide {
+  width: 32%;
+  object-fit: cover;
+  border-radius: 1rem;
+
+  animation: visual-flow 6s infinite ease-in-out;
+  filter: saturate(0.5) brightness(0.8);
+}
+
+/* Delays para as fotos não animarem juntas */
+.slide:nth-child(2) {
+  animation-delay: 2s;
+}
+
+.slide:nth-child(3) {
+  animation-delay: 4s;
+}
+
+@keyframes visual-flow {
+
+  0%,
+  100% {
+    filter: saturate(0.5) brightness(0.8);
+    transform: translateY(0);
+  }
+
+  50% {
+    filter: saturate(1.2) brightness(1.1);
+    transform: translateY(-5px);
+    /* Movimento mínimo, quase imperceptível */
+  }
 }

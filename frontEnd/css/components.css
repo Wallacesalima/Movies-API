@@ -1,71 +1,99 @@
 .card {
-  background: #311919;
-  border-radius: 8px;
-  padding: 10px;
-  margin: 20px;
-  min-height: 800px;
-  min-width: 300px;
-  max-width: 300px;
-  border: solid 2px #ffffff;
+  position: relative;
+  overflow: hidden;
+  background: #000000;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  margin: 1rem;
+  min-width: 18.5rem;
+  max-width: 18.5rem;
+  border: solid 1px #ffffff;
+  transition: all 0.4s ease;
+}
+
+.container:has(.card:hover) .card:not(:hover) {
+  filter: grayscale(1);
+  opacity: 0.5;
+  transform: scale(0.95);
 }
 
 .card:hover {
-  background: #000000bc;
-  box-shadow: 0 12px 20px rgba(255, 255, 255, 0.1);
-  /* sombra mais destacada */
-  transform: translateY(-5px);
-  /* leve elevação */
+  transform: scale(1.05);
+  /* Cresce levemente */
+  filter: grayscale(0);
+  /* Garante cor total */
+  opacity: 1;
+}
+
+.card:hover .info-layer{
+  bottom: 0;
+}
+
+.info-layer {
+  position: absolute;
+  bottom: -100%; /* Escondido abaixo */
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, #000000, #000000cb);
+  transition: bottom 0.6s ease;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .card img {
   width: 100%;
-  min-height: 380px;
-  max-height: 380px;
+  min-height: 24rem;
+  max-height: 24rem;
   border-radius: 4px 4px 0 0;
   margin-bottom: 0;
-  border: solid 3px #ffffff;
+  border: solid 1px #ffffff;
 }
 
 
 .card h3 {
-  display: grid;
   color: #311919;
+  font-family: Helvetica;
+  font-weight: 700;
   justify-content: center;
   align-content: center;
   background: #ffffff;
   border-radius: 0 0 4px 4px;
   text-align: center;
-  font-size: 16px;
+  font-size: 1rem;
   margin: -5px 0 15px;
   padding: 10px;
-  min-height: 60px;
+  min-height: 4rem;
+  max-height: 4rem;
 }
 
 .card span {
   display: block;
   text-align: center;
-  font-size: 14px;
-  color: #aaa;
-  margin: 5px;
+  font-size: 1rem;
+  color: #ccccccc9;
+  margin: 0.5rem;
 }
 
 .card p {
-  margin-top: 15px;
-  border-top: solid 2px #fff;
-  background: #431313;
-  border-radius: 0 0 0.5rem 0.5rem;
-  padding: 0.8rem;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Helvetica;
+  padding: 0.5rem;
+  border-radius: 0;
   font-size: 1rem;
-  text-align: center;
-  min-height: 13rem;
-  max-height: 13rem;
+  align-content: end;
+  text-align: justify;
+  min-height: 90%;
+  max-height: 90%;
+  width: 100%;
   overflow-y: auto;
 }
 
 .btns_nav {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 5rem;
   width: 100%;
 }
 
@@ -75,19 +103,21 @@
   background: none;
   color: #fff;
   border: none;
-  min-width: 10rem;
+  min-width: 8rem;
   min-height: 2.5rem;
-  border-bottom: solid 2px none;
-}
-
-.btns_nav_style:hover {
-  background-color: none;
-  cursor: pointer;
   border-bottom: solid 2px #ffffff;
 }
 
-.btns_nav_style:active {
+.btns_nav_style:hover {
   border-bottom: solid 2px #311919;
+  border-radius: 0;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.btns_nav_style_active {
+  border-bottom: solid 2px #ffffff;
+  background: #311919;
 }
 
 .busca {
@@ -96,17 +126,17 @@
 
 .busca-botao {
   text-align: center;
-  background: #431313;
+  background: #43131300;
   cursor: pointer;
-  border: solid 1px #fff;
+  border: none;
   font-size: 1.3rem;
   min-width: 4rem;
+  max-width: 4rem;
   height: 2.5rem;
-  border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .busca-botao:hover {
-  background-color: #790707;
+  background-color: #79070770;
 }
 
 .busca-botao:active {
@@ -120,24 +150,22 @@ input {
   border: none;
   outline: none;
   color: #ffffff;
-  min-width: 60%;
-  text-align: center;
+  text-align: left;
+  width: 100%;
   height: 2.5rem;
   border-radius: 0.5rem 0 0 0.5rem;
-  border: solid 1px #fff;
 }
 
-input:focus {
+.container_input:focus-within {
   color: #fff;
+  border: solid 2px #fff;
   transition: all 0.5s ease-in-out;
-  background: #43131380;
-  border: solid 1px #fff;
   outline: #fff;
-  border-radius: none;
 }
 
 input::placeholder {
   color: #ffffff50;
+  text-align: left;
 }
 
 .feedback {
@@ -148,7 +176,7 @@ input::placeholder {
   padding: 1rem;
   font-size: 1.5rem;
   margin: 1rem 0;
-  animation: subirERevelar 1s ease-out forwards ;
+  animation: subirERevelar 1s ease-out forwards;
 }
 
 .feedback_error {
@@ -160,7 +188,7 @@ input::placeholder {
   width: 35%;
   height: 10rem;
   background-color: #e50914cd;
-  animation: subirERevelar 1s ease-out forwards ;
+  animation: subirERevelar 1s ease-out forwards;
 }
 
 .feedback_info {
@@ -173,7 +201,7 @@ input::placeholder {
   height: 5rem;
   background-color: #393031cd;
   animation: fadeUp 0.7s ease-out forwards;
-  animation: subirERevelar 1s ease-out forwards ;
+  animation: subirERevelar 1s ease-out forwards;
 
 }
 

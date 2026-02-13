@@ -29,13 +29,17 @@ function criarCardFilme(filme) {
 
     // Monta o HTML interno do card
     card.innerHTML = `
+    <div class="info">
       <img src="${imagem}" alt="${filme.title}">
       <h3>${filme.title}</h3>
       <span>Nota: ${nota} ${estrela}</span>
       <span>Data de lançamento: ${dataFormatada}</span>
       <span>Popularidade: ${filme.popularity}</span>
+      </div>
+      <div class="info-layer">
       <p>${resumo}</p>
       <div class="trailer-container">Carregando trailer...</div>
+      </div>
     `;
 
     // Chama função que busca o trailer e coloca no card
@@ -48,13 +52,35 @@ const feedback = document.getElementById('feedback');
 
 function criarIntroducao() {
     const container = document.querySelector(".card-filmes");
-    container.innerHTML = `   
-    <div class="container_gif_introducao shake efeito_vidro">
-      <img class="gif_introduction" src="frontEnd/img/introduction_photo.png" alt="introdução">
-      <h2>EXPLORE FILMES</h2>
-      <p> Faça uma busca ou selecione uma categoria para começar.
-    </div>
+
+    const url = `https://movies-api-dlx6.onrender.com/api/populares?page=1`;
+
+    carregarFilmesPopularesApi(url).then(dados => {
+        const top3Filmes = dados.results.slice(0, 3)
+        let htmlImagens = ''
+        top3Filmes.forEach(filme => {
+            const imagem = filme.poster_path
+                ? `https://image.tmdb.org/t/p/w500${filme.poster_path}`
+                : "/frontEnd/img/sem-foto.gif";
+
+            htmlImagens += `
+             <img class="slide" src="${imagem}" alt="${filme.title}">
+             `
+
+            container.innerHTML = `   
+            <div class="container_gif_introducao shake efeito_vidro">
+            <h2>EXPLORE FILMES</h2>
+            <p> Faça uma busca ou selecione uma categoria para começar.
+            <h2>TOP 3 populares</h2>
+            <div class="container_Top3">
+             ${htmlImagens}
+            </div>
+            </div>
     `
+        })
+    })
+        .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
+
 }
 
 function mostrarFeedback(mensagem) {
@@ -94,18 +120,18 @@ function buscarFilme() {
         limparContainer()
         return;
     }
-    
+
     esconderFeedback()
     limparContainer()
     mostrarLoading()
-    
+
     buscarFilmeApi(query).then(dados => {
         esconderFeedback()
-        
+
         if (!dados.results.length) {
             mostrarFeedback('Nenhum filme encontrado, digite um nome de filme valido.')
             feedback.classList.add('feedback_error')
-            limparContainer() 
+            limparContainer()
             return;
         }
 
@@ -209,7 +235,7 @@ function carregarProximosFilmes() {
     const dataAtual = `${ano}-${mes}-${dia}`;
     console.log(dataAtual); // Ex: 09-02-2026
 
-    for (let i = 1; i <= 50; i++) {
+    for (let i = 1; i <= 5; i++) {
         const url = `https://movies-api-dlx6.onrender.com/api/nextFilmes?page=${i}`;
 
         carregarProximosApi(url).then(dados => {
@@ -226,27 +252,47 @@ function carregarProximosFilmes() {
             });
     }
 }
+function removerAtivos() {
+    document.querySelectorAll('.btns_nav_style').forEach(btn => {
+        btn.classList.remove('btns_nav_style_active')
+    })
+}
 
+
+criarIntroducao()
 // Quando o site carregar, adiciona o evento de clique no botão de busca
 document.addEventListener("DOMContentLoaded", () => {
     esconderFeedback()
-    criarIntroducao()
 
     document.getElementById("botaoBusca").addEventListener("click", buscarFilme);
 
     document.addEventListener("keydown", (event) => {
-            if (event.key === "Enter") buscarFilme();
-        });
+        if (event.key === "Enter") buscarFilme();
+    });
 
-    document.getElementById("populares").addEventListener('click', () => {
+    document.getElementById("populares").addEventListener('click', function () {
+        removerAtivos()
+        this.classList.add('btns_nav_style_active')
         carregarFilmesPopulares()
     })
 
-    document.getElementById("melhores_notas").addEventListener('click', carregarFilmesMelhoresNotas)
+    document.getElementById("melhores_notas").addEventListener('click', function () {
+        removerAtivos()
+        this.classList.add('btns_nav_style_active')
+        carregarFilmesMelhoresNotas()
+    })
 
-    document.getElementById("lancamento").addEventListener('click', carregarLancamentos)
+    document.getElementById("lancamento").addEventListener('click', function () {
+        removerAtivos()
+        this.classList.add('btns_nav_style_active')
+        carregarLancamentos()
+    })
 
-    document.getElementById("lancamento-futuros").addEventListener('click', carregarProximosFilmes)
+    document.getElementById("lancamento-futuros").addEventListener('click', function () {
+        removerAtivos()
+        this.classList.add('btns_nav_style_active')
+        carregarProximosFilmes()
+    })
 
 });
 

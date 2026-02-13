@@ -18,12 +18,14 @@ body {
   background-position: center center;
 }
 
+
 svg {
   stroke: #ffffff;
   width: 1.5rem;
 }
 
 h1 {
+  font-size: 1.3rem;
   color: #ffffff;
   padding: 1rem 0;
   margin: 0.5rem 0;
