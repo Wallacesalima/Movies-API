@@ -117,3 +117,19 @@ app.get("/api/nextFilmes", async (req, res) => {
     res.status(500).json({ error: "Erro ao buscar filmes que seram lançados" });
   }
 });
+
+app.get("/api/generos", async (req, res) => {
+  const page = req.query.page || 1;
+  
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=pt-BR&page=${page}`
+    );
+    
+    const data = await response.json();
+    res.json(data);
+    
+  } catch (error) {
+    res.status(500).json({ error: "Erro ao buscar generos de filmes" });
+  }
+});

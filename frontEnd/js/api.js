@@ -32,6 +32,13 @@ function carregarProximosApi(url) {
         .then(res => res.json());
 }
 
+function carregarGenerosApi(url) {
+    return fetch(url)
+        .then(res => res.json());
+}
+
+
+
 
 
 

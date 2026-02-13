@@ -24,22 +24,30 @@ function criarCardFilme(filme) {
     const nota = filme.vote_average?.toFixed(2) || "N/A";
 
     // Se a nota for maior ou igual a 7, adiciona uma estrela ⭐, senão fica vazio
-    const estrela = filme.vote_average >= 7 ? "⭐" : "";
+
+    let quantidadeDeEstrelas = Math.ceil(filme.vote_average / 2)
+
+    let estrela = '⭐'.repeat(quantidadeDeEstrelas)
+
+    const quantVotos = filme.vote_count.toLocaleString('pt-BR')
+
+    const teste = filme.genre_ids
 
 
     // Monta o HTML interno do card
     card.innerHTML = `
     <div class="info">
-      <img src="${imagem}" alt="${filme.title}">
-      <h3>${filme.title}</h3>
-      <span>Nota: ${nota} ${estrela}</span>
-      <span>Data de lançamento: ${dataFormatada}</span>
-      <span>Popularidade: ${filme.popularity}</span>
-      </div>
-      <div class="info-layer">
-      <p>${resumo}</p>
-      <div class="trailer-container">Carregando trailer...</div>
-      </div>
+    <img src="${imagem}" alt="${filme.title}">
+    <h3>${filme.title}</h3>
+    <span class="nota">${nota} - ${estrela}</span>
+    <span>${quantVotos} avaliações.</span>
+    <span>Lançamento: ${dataFormatada}</span>
+    <span>Popularidade: ${filme.popularity}</span>
+    </div>
+    <div class="trailer-container">Carregando trailer...</div>
+    <div class="info-layer">
+    <p>${resumo}</p>
+    </div>
     `;
 
     // Chama função que busca o trailer e coloca no card
@@ -48,10 +56,18 @@ function criarCardFilme(filme) {
     return card;
 }
 
+carregarGenerosApi(url).then(dados => {
+
+    dados.results.forEach(genero => {
+        console.log(genero.name + genero.id)
+    });
+})
+    .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
+
 const feedback = document.getElementById('feedback');
 
 function criarIntroducao() {
-    const container = document.querySelector(".card-filmes");
+    const introducao = document.querySelector(".introducao");
 
     const url = `https://movies-api-dlx6.onrender.com/api/populares?page=1`;
 
@@ -64,19 +80,19 @@ function criarIntroducao() {
                 : "/frontEnd/img/sem-foto.gif";
 
             htmlImagens += `
-             <img class="slide" src="${imagem}" alt="${filme.title}">
-             `
+            <img class="slide" src="${imagem}" alt="${filme.title}">
+            `
 
-            container.innerHTML = `   
+            introducao.innerHTML = `   
             <div class="container_gif_introducao shake efeito_vidro">
             <h2>EXPLORE FILMES</h2>
             <p> Faça uma busca ou selecione uma categoria para começar.
             <h2>TOP 3 populares</h2>
             <div class="container_Top3">
-             ${htmlImagens}
+            ${htmlImagens}
             </div>
             </div>
-    `
+            `
         })
     })
         .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
@@ -84,17 +100,19 @@ function criarIntroducao() {
 }
 
 function mostrarFeedback(mensagem) {
+    limparIntroducao()
     feedback.textContent = mensagem;
     feedback.classList.remove('hidden');
 }
 function mostrarLoading() {
+    limparIntroducao()
     feedback.classList.remove('feedback_error', 'feedback_info');
     feedback.classList.remove('hidden');
     feedback.innerHTML = `
-      <div class="container_gif">
-        <img class="gif_carregando" src="frontEnd/assets/gifs/loader-9342.gif" alt="Carregando">
-        <p>Carregando filmes...</p>
-      </div>
+    <div class="container_gif">
+    <img class="gif_carregando" src="frontEnd/assets/gifs/loader-9342.gif" alt="Carregando">
+    <p>Carregando filmes...</p>
+    </div>
     `;
 }
 
@@ -107,6 +125,12 @@ function esconderFeedback() {
 function limparContainer() {
     const container = document.querySelector(".card-filmes");
     container.innerHTML = ""
+}
+
+function limparIntroducao() {
+    const introducao = document.querySelector(".introducao");
+    introducao.classList.add('hidden')
+    introducao.innerHTML = ""
 }
 
 // Função que busca filmes com base na pesquisa do usuário
@@ -140,6 +164,7 @@ function buscarFilme() {
             if (filme.vote_average === 0.00) return; // Ignora filmes sem nota
             const card = criarCardFilme(filme);
             container.appendChild(card);
+            limparIntroducao()
         });
     })
         .catch(erro => {
@@ -269,19 +294,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") buscarFilme();
+        if (event.key === "Enter")
+            buscarFilme();
     });
 
     document.getElementById("populares").addEventListener('click', function () {
+        limparIntroducao()
         removerAtivos()
         this.classList.add('btns_nav_style_active')
         carregarFilmesPopulares()
     })
 
     document.getElementById("melhores_notas").addEventListener('click', function () {
+        limparIntroducao()
         removerAtivos()
         this.classList.add('btns_nav_style_active')
-        console.log(this)
+
         carregarFilmesMelhoresNotas()
     })
 
@@ -292,6 +320,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     document.getElementById("lancamento-futuros").addEventListener('click', function () {
+        limparIntroducao()
         removerAtivos()
         this.classList.add('btns_nav_style_active')
         carregarProximosFilmes()

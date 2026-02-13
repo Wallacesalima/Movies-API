@@ -25,17 +25,24 @@ footer {
   margin: 0;
   background: #0000008f;
 }
-
-.container {
+.introducao {
   display: flex;
   justify-content: center;
+}
+
+.container {
+  display: block;
+  /* justify-content: center; */
   padding: 1rem;
+  width: 100%;
   min-height: 60vh;
 }
 
 .card-filmes {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  justify-content: space-evenly;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); 
+  gap: 2rem;
+  /* grid-template-rows: repeat(auto, 1fr); */
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
 }

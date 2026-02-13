@@ -25,22 +25,24 @@
   opacity: 1;
 }
 
-.card:hover .info-layer{
-  bottom: 0;
+.card:hover .info-layer {
+  bottom: 8%;
 }
 
 .info-layer {
   position: absolute;
-  bottom: -100%; /* Escondido abaixo */
+  bottom: -100%;
+  /* Escondido abaixo */
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 91%;
   background: linear-gradient(to top, #000000, #000000cb);
   transition: bottom 0.6s ease;
   padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  border-bottom: solid 2px #fff;
+  border-radius: 1rem 1rem 0 0;
 }
 
 .card img {
@@ -71,10 +73,21 @@
 
 .card span {
   display: block;
-  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: justify;
   font-size: 1rem;
   color: #ccccccc9;
+  font-weight: 700;
   margin: 0.5rem;
+  letter-spacing: 2px
+}
+
+.card .nota {
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  transform: scaleX(1.1);
+  transform-origin: left;
 }
 
 .card p {
@@ -82,12 +95,12 @@
   padding: 0.5rem;
   border-radius: 0;
   font-size: 1rem;
-  align-content: end;
   text-align: justify;
-  min-height: 90%;
-  max-height: 90%;
+  min-height: 100%;
+  max-height: 100%;
   width: 100%;
   overflow-y: auto;
+  align-content: flex-end;
 }
 
 .btns_nav {
@@ -209,7 +222,7 @@ input::placeholder {
   width: 100%;
   text-align: center;
   display: inline-block;
-  margin-top: 1rem;
+  /* margin-top: 0.3rem; */
   padding: 6px 12px;
   background-color: #000000;
   color: white;
@@ -223,7 +236,7 @@ input::placeholder {
   width: 100%;
   text-align: center;
   display: inline-block;
-  margin-top: 1rem;
+  /* margin-top: 0.3rem; */
   padding: 6px 12px;
   background-color: #e50914;
   color: white;

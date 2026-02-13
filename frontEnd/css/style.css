@@ -8,7 +8,7 @@
   /* transition: all 2s ease; */
   border-radius: 1rem;
   width: 60%;
-  height: auto;
+  height: 60%;
 }
 
 .container_gif_introducao:hover {
@@ -131,13 +131,13 @@
   padding: 0.5rem;
   gap: 0.5rem;
   justify-content: center;
+  height: 26rem;
 }
 
 .slide {
   width: 32%;
   object-fit: cover;
   border-radius: 1rem;
-
   animation: visual-flow 6s infinite ease-in-out;
   filter: saturate(0.5) brightness(0.8);
 }
