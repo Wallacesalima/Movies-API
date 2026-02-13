@@ -264,8 +264,8 @@ document.addEventListener("DOMContentLoaded", () => {
     esconderFeedback()
 
     document.getElementById("botaoBusca").addEventListener("click", function () {
-        document.querySelector('.btns_nav_style_active').classList.remove('btns_nav_style_active')
         buscarFilme()
+        document.querySelector('.btns_nav_style_active').classList.remove('btns_nav_style_active')
     });
 
     document.addEventListener("keydown", (event) => {
