@@ -31,7 +31,15 @@ function criarCardFilme(filme) {
 
     const quantVotos = filme.vote_count.toLocaleString('pt-BR')
 
-    const teste = filme.genre_ids
+    const GENRES = {
+        28: "Ação", 12: "Aventura", 16: "Animação", 35: "Comédia",
+        80: "Crime", 99: "Documentário", 18: "Drama", 10751: "Família",
+        14: "Fantasia", 36: "História", 27: "Terror", 10402: "Música",
+        9648: "Mistério", 10749: "Romance", 878: "Ficção Científica",
+        10770: "Cinema TV", 53: "Suspense", 10752: "Guerra", 37: "Faroeste"
+    };
+
+    const listaGeneros = filme.genre_ids.map(id => GENRES[id] || "Outro").join(", ");
 
 
     // Monta o HTML interno do card
@@ -46,6 +54,10 @@ function criarCardFilme(filme) {
     </div>
     <div class="trailer-container">Carregando trailer...</div>
     <div class="info-layer">
+    <div class="generos"> 
+    <h2>Gêneros </h2>
+    <span>${listaGeneros}</span>
+    </div>
     <p>${resumo}</p>
     </div>
     `;
@@ -56,13 +68,7 @@ function criarCardFilme(filme) {
     return card;
 }
 
-carregarGenerosApi(url).then(dados => {
 
-    dados.results.forEach(genero => {
-        console.log(genero.name + genero.id)
-    });
-})
-    .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
 
 const feedback = document.getElementById('feedback');
 
