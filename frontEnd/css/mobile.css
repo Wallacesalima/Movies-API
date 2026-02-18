@@ -143,7 +143,7 @@
     height: 80%;
   }
 
-  .container_gif_introducao {
+  .container_introducao {
     text-align: center;
     width: 90%;
     height: 100%;
@@ -151,7 +151,7 @@
     transition: all 0.5s ease;
   }
 
-  .container_gif_introducao h2 {
+  .container_introducao h2 {
     margin: 1rem;
     border: none;
     width: 100%;
@@ -161,7 +161,7 @@
       cursor .6s step-end infinite;
   }
 
-  .container_gif_introducao p {
+  .container_introducao p {
     animation: flutuar 3s linear infinite;
     margin: 1rem 0;
   }
@@ -197,7 +197,7 @@
     }
 
     to {
-      width: 100%;
+      width: 120%;
     }
   }
 

@@ -1,4 +1,4 @@
-.container_gif_introducao {
+.container_introducao {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -11,15 +11,15 @@
   height: 60%;
 }
 
-.container_gif_introducao:hover {
+.container_introducao:hover {
   /* box-shadow: none; */
   background: #000000b0;
   box-shadow: 0 4px 30px rgba(255, 255, 255, 0.3);
   transition: all 0.5s ease;
 }
 
-.container_gif_introducao h2 {
-  width: 0;
+.container_introducao h2 {
+  max-width:  18rem;
   white-space: nowrap;
   overflow: hidden;
   border-right: 3px solid #431313;
@@ -32,10 +32,10 @@
     cursor .6s step-end infinite;
 }
 
-.container_gif_introducao p {
+.container_introducao p {
   text-align: center;
   font-size: 1.2rem;
-  animation: flutuar 7s linear infinite;
+  animation: flutuar 3s linear infinite;
 
 }
 

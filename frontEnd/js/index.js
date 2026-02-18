@@ -90,7 +90,7 @@ function criarIntroducao() {
             <img class="imagens_Top3" src="${imagem}" alt="${filme.title}">
             `
             introducao.innerHTML = `   
-            <div class="container_gif_introducao shake efeito_vidro">
+            <div class="container_introducao efeito_vidro">
             <h2>EXPLORE FILMES</h2>
             <p> Faça uma busca ou selecione uma categoria para começar.
             <h2>TOP 3 populares</h2>

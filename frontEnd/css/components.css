@@ -107,7 +107,7 @@
 .btns_nav {
   display: flex;
   justify-content: center;
-  gap: 7rem;
+  gap: 6rem;
   width: 100%;
 }
 

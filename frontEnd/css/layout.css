@@ -10,10 +10,10 @@ header {
 
 nav {
   display: flex;
-  height: 4rem;
   align-items: center;
   background: #000000b6;
-  padding-bottom: 2rem;
+  padding: 1rem 0 2rem 0;
+  border-bottom: 1px solid #fff;
 }
 
 footer {
@@ -26,6 +26,7 @@ footer {
   margin: 0;
   background: #0000008f;
 }
+
 .introducao {
   display: flex;
   justify-content: center;
@@ -41,7 +42,7 @@ footer {
 
 .card-filmes {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr)); 
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   gap: 2rem;
   /* grid-template-rows: repeat(auto, 1fr); */
   grid-column-gap: 0px;
