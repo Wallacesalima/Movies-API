@@ -107,7 +107,7 @@
 .btns_nav {
   display: flex;
   justify-content: center;
-  gap: 5rem;
+  gap: 7rem;
   width: 100%;
 }
 
@@ -117,13 +117,13 @@
   background: none;
   color: #fff;
   border: none;
-  min-width: 8rem;
+  min-width: 10rem;
   min-height: 2.5rem;
   border-bottom: solid 2px #ffffff;
 }
 
 .btns_nav_style:hover {
-  border-bottom: solid 2px #311919;
+  border-bottom: solid 2px #79070770;
   border-radius: 0;
   cursor: pointer;
   color: #ffffff;
@@ -131,11 +131,7 @@
 
 .btns_nav_style_active {
   border-bottom: solid 2px #ffffff;
-  background: #311919;
-}
-
-.busca {
-  margin-bottom: 1rem;
+  background: #79070770;
 }
 
 .busca-botao {

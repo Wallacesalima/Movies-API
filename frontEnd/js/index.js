@@ -74,10 +74,11 @@ const feedback = document.getElementById('feedback');
 
 function criarIntroducao() {
     const introducao = document.querySelector(".introducao");
+    mostrarLoading()
 
     const url = `https://movies-api-dlx6.onrender.com/api/populares?page=1`;
 
-    carregarFilmesPopularesApi(url).then(dados => {
+    carregarApi(url).then(dados => {
         const top3Filmes = dados.results.slice(0, 3)
         let htmlImagens = ''
         top3Filmes.forEach(filme => {
@@ -88,7 +89,6 @@ function criarIntroducao() {
             htmlImagens += `
             <img class="imagens_Top3" src="${imagem}" alt="${filme.title}">
             `
-
             introducao.innerHTML = `   
             <div class="container_gif_introducao shake efeito_vidro">
             <h2>EXPLORE FILMES</h2>
@@ -100,6 +100,8 @@ function criarIntroducao() {
             </div>
             `
         })
+        esconderFeedback()
+
     })
         .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
 
@@ -139,7 +141,6 @@ function limparIntroducao() {
     introducao.innerHTML = ""
 }
 
-// Função que busca filmes com base na pesquisa do usuário
 function buscarFilme() {
     const container = document.querySelector(".card-filmes");
     const query = document.getElementById("inputBusca").value.trim();
@@ -188,7 +189,7 @@ function carregarFilmesPopulares() {
     for (let i = 1; i <= 5; i++) {
         const url = `https://movies-api-dlx6.onrender.com/api/populares?page=${i}`;
 
-        carregarFilmesPopularesApi(url).then(dados => {
+        carregarApi(url).then(dados => {
 
             dados.results.forEach(filme => {
                 // Só mostra se for popular o suficiente
@@ -213,10 +214,9 @@ function carregarFilmesMelhoresNotas() {
         const url = `https://movies-api-dlx6.onrender.com/api/melhoresNotas?page=${i}`;
 
 
-        carregarMelhoresNotasApi(url).then(dados => {
+        carregarApi(url).then(dados => {
 
             dados.results.forEach(filme => {
-                // Só mostra filmes com nota maior ou igual 8
 
                 if (filme.vote_average >= 8.450 && filme.vote_count > 10000) {
                     esconderFeedback()
@@ -240,7 +240,7 @@ function carregarLancamentos() {
         const url = `https://movies-api-dlx6.onrender.com/api/lancamentos?page=${i}`;
 
 
-        carregarLancamentosApi(url).then(dados => {
+        carregarApi(url).then(dados => {
             dados.results.forEach(filme => {
                 const card = criarCardFilme(filme)
                 container.appendChild(card)
@@ -268,7 +268,7 @@ function carregarProximosFilmes() {
     for (let i = 1; i <= 5; i++) {
         const url = `https://movies-api-dlx6.onrender.com/api/nextFilmes?page=${i}`;
 
-        carregarProximosApi(url).then(dados => {
+        carregarApi(url).then(dados => {
             dados.results.forEach(filme => {
                 if (filme.release_date >= dataAtual && filme.popularity >= 10.0) {
                     const card = criarCardFilme(filme)
@@ -289,10 +289,9 @@ function removerAtivos() {
 }
 
 
-criarIntroducao()
-// Quando o site carregar, adiciona o evento de clique no botão de busca
 document.addEventListener("DOMContentLoaded", () => {
     esconderFeedback()
+    criarIntroducao()
 
     document.getElementById("botaoBusca").addEventListener("click", function () {
         buscarFilme()

@@ -9,9 +9,9 @@
   }
 
   .card p {
-    font-size: 14px;
+    font-size: 1rem;
     min-height: 10rem;
-    max-height: 10rem;
+    max-height: 90%;
   }
 
   .card h3 {
@@ -140,8 +140,8 @@
     display: flex;
     justify-content: center;
     align-content: center;
-    height: 80%; 
-   }
+    height: 80%;
+  }
 
   .container_gif_introducao {
     text-align: center;
@@ -181,8 +181,8 @@
   .imagens_Top3 {
     padding: 0;
     margin-top: 1rem;
-    width: 40%;
-    aspect-ratio: 4/5;
+    width: 35%;
+    aspect-ratio: 2/4;
   }
 
   .container {
@@ -190,7 +190,7 @@
     justify-content: center;
   }
 
-  /* animações mudadas para se adequar ao mobile */
+  /* animações para se adequar ao mobile */
   @keyframes digitar {
     from {
       width: 0;

@@ -13,21 +13,7 @@ function buscarFilmeApi(query) {
         .then(res => res.json())
 }
 
-function carregarFilmesPopularesApi(url) {
-    return fetch(url)
-        .then(res => res.json())
-}
-
-function carregarMelhoresNotasApi(url) {
-    return fetch(url)
-        .then(res => res.json())
-}
-
-function carregarLancamentosApi(url) {
-    return fetch(url)
-        .then(res => res.json());
-}
-function carregarProximosApi(url) {
+function carregarApi(url) {
     return fetch(url)
         .then(res => res.json());
 }
