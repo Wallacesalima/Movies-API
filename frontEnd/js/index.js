@@ -86,7 +86,7 @@ function criarIntroducao() {
                 : "/frontEnd/img/sem-foto.gif";
 
             htmlImagens += `
-            <img class="slide" src="${imagem}" alt="${filme.title}">
+            <img class="imagens_Top3" src="${imagem}" alt="${filme.title}">
             `
 
             introducao.innerHTML = `   

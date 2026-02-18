@@ -45,3 +45,29 @@
   backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(9px);
 }
+
+@keyframes visual-flow {
+
+  0%,
+  100% {
+    filter: saturate(0.5) brightness(0.8);
+    transform: translateY(0);
+  }
+
+  50% {
+    filter: saturate(1.2) brightness(1.1);
+    transform: translateY(-5px);
+    /* Movimento mínimo, quase imperceptível */
+  }
+}
+
+@keyframes surgir {
+  from {
+    opacity: 0;
+    transform: translateY(-20px); /* Começa um pouco acima */
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0); /* Termina na posição original */
+  }
+}

@@ -83,7 +83,8 @@
 }
 
 .card .nota {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  text-align: center;
   font-weight: 700;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   transform: scaleX(1.1);
@@ -181,40 +182,28 @@ input::placeholder {
   text-align: left;
 }
 
-.feedback {
-  display: flex;
-  justify-self: center;
-  align-self: center;
-  color: #ffffff;
-  padding: 1rem;
-  font-size: 1.5rem;
-  margin: 1rem 0;
-  animation: subirERevelar 1s ease-out forwards;
-}
-
 .feedback_error {
   justify-self: center;
   align-content: center;
   text-align: center;
   padding: 1rem;
   font-size: 1.5rem;
-  width: 35%;
-  height: 10rem;
-  background-color: #e50914cd;
-  animation: subirERevelar 1s ease-out forwards;
+  width: 60%;
+  height: 5rem;
+  background-color: #e509142f;
+  animation: surgir 0.5s ease-out forwards;
 }
 
 .feedback_info {
-  justify-content: center;
+  justify-self: center;
   align-content: center;
   text-align: center;
   padding: 1rem;
   font-size: 1.5rem;
-  width: 50%;
+  width: 60%;
   height: 5rem;
-  background-color: #393031cd;
-  animation: fadeUp 0.7s ease-out forwards;
-  animation: subirERevelar 1s ease-out forwards;
+  background-color: #39303134;
+  animation: surgir 0.5s ease-out forwards;
 
 }
 
