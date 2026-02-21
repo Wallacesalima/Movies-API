@@ -44,13 +44,13 @@ function criarCardFilme(filme) {
 
     // Monta o HTML interno do card
     card.innerHTML = `
+    <h4 class="mais_info"> ⇩ mais informações ⇩ </h4>
     <div class="info">
     <img src="${imagem}" alt="${filme.title}">
     <h3>${filme.title}</h3>
     <span class="nota">${nota} - ${estrela}</span>
     <span>${quantVotos} avaliações.</span>
     <span>Lançamento: ${dataFormatada}</span>
-    <span>Popularidade: ${filme.popularity}</span>
     </div>
     <div class="trailer-container">Carregando trailer...</div>
     <div class="info-layer">
@@ -58,7 +58,10 @@ function criarCardFilme(filme) {
     <h2>Gêneros </h2>
     <span>${listaGeneros}</span>
     </div>
+    <div class="sinopse">
+    <h2>Resumo</h2>
     <p>${resumo}</p>
+    </div>
     </div>
     `;
 
@@ -105,6 +108,19 @@ function criarIntroducao() {
     })
         .catch(erro => console.error("Erro ao buscar filmes populares:", erro));
 
+}
+
+function loginEmDesenvolvimento(mensagem) {
+    limparIntroducao()
+    limparContainer()
+    feedback.classList.remove('feedback_error', 'feedback_info');
+    feedback.classList.remove('hidden');
+    feedback.innerHTML = `
+    <div class="container_gif">
+    <img class="gif_login "  src="frontEnd/img/avedeto-pixel-art-12601_512.gif" alt="Carregando">
+    <p class="mensagem_login efeito_vidro">${mensagem}</p>
+    </div>
+    `
 }
 
 function mostrarFeedback(mensagem) {
