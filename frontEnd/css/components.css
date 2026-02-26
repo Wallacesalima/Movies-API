@@ -46,9 +46,9 @@
   cursor: pointer;
 }
 
-/* .mais_info:hover {
-
-} */
+.mais_info:hover {
+  background-color: #790707d3;
+}
 
 .info-layer {
   position: absolute;
@@ -68,12 +68,14 @@
   overflow-y: auto;
 }
 
-.generos {
+.info-div {
   padding: 0.5rem 1rem;
   text-align: center;
+  justify-items: center;
 }
 
-.generos h2 {
+.info-div h2 {
+  width: 100%;
   padding: 0 0 0.2rem 0;
   text-align: center;
   border-bottom: solid 1px #fff;
@@ -136,12 +138,18 @@
 }
 
 .card .nota {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  transform: scaleX(1.1);
-  transform-origin: left;
+}
+
+.card .avaliacoes {
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 300;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  margin-bottom: 1rem;
 }
 
 .btns_nav {
@@ -262,7 +270,7 @@ input::placeholder {
 .botao-trailer {
   width: 100%;
   padding: 0.5rem 1rem;
-  background-color: #e50914;
+  background-color: #79070770;
   color: white;
   text-decoration: none;
   border-radius: 0.5rem;
@@ -271,7 +279,7 @@ input::placeholder {
 }
 
 .botao-trailer:hover {
-  background-color: #b20710;
+  background-color: #790707d3;
   cursor: pointer;
 }
 

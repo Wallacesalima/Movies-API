@@ -49,15 +49,17 @@ function criarCardFilme(filme) {
     <img src="${imagem}" alt="${filme.title}">
     <h3>${filme.title}</h3>
     <span class="nota">${nota} - ${estrela}</span>
-    <span>${quantVotos} avaliações.</span>
-    <span>Lançamento: ${dataFormatada}</span>
+    <span class="avaliacoes">${quantVotos} avaliações.</span>
     </div>
     <div class="trailer-container">Carregando trailer...</div>
     <div class="info-layer">
-    <div class="generos"> 
+    <div class="info-div"> 
     <h2>Gêneros </h2>
     <span>${listaGeneros}</span>
     </div>
+    <div class="info-div"> 
+    <h2>Lançamento</h2>
+    <span>${dataFormatada}</span> </div>
     <div class="sinopse">
     <h2>Resumo</h2>
     <p>${resumo}</p>
