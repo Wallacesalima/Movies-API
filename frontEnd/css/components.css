@@ -106,8 +106,8 @@
   border-radius: 0.5rem 0.5rem 0 0;
   margin-bottom: 0;
   border: solid 1px #ffffff;
+  transition: transform 0.4s ease;
 }
-
 
 .card h3 {
   color: #311919;
@@ -179,6 +179,7 @@
 .btns_nav_style_active {
   border-bottom: solid 2px #ffffff;
   background: #79070770;
+  transition: all 0.5s linear;
 }
 
 .busca-botao {
