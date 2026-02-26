@@ -44,7 +44,7 @@ function criarCardFilme(filme) {
 
     // Monta o HTML interno do card
     card.innerHTML = `
-    <h4 class="mais_info"> ⇩ mais informações ⇩ </h4>
+    <button class="mais_info" onclick="mostrarInfoLayer(this)"> Detalhes </button>
     <div class="info">
     <img src="${imagem}" alt="${filme.title}">
     <h3>${filme.title}</h3>
@@ -69,6 +69,18 @@ function criarCardFilme(filme) {
     carregarTrailer(filme.id, card);
 
     return card;
+}
+
+function mostrarInfoLayer(botao) {
+    const card = botao.closest('.card');
+    card.classList.toggle('mostrar-detalhes');
+
+    // Opcional: muda o texto do botão para facilitar
+    if (card.classList.contains('mostrar-detalhes')) {
+        botao.textContent = 'Fechar';
+    } else {
+        botao.textContent = 'Detalhes';
+    }
 }
 
 
